@@ -1,0 +1,23 @@
+body {
+    background-color: #14182b;
+    color: #8ac4ca;
+    font-family: 'Garet', sans-serif;
+}
+
+h1, h2, h3 {
+    color: #C50c6b;
+    font-family: 'Anton', sans-serif;
+}
+
+a, a:visited {
+    color: #6c1f4d;
+}
+
+a:hover {
+    color: #13192b;
+}
+
+code {
+    background-color: #13192b;
+    color: #8ac4ca;
+}

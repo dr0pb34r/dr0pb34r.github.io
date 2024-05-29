@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino with Neopixel Ring Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Garet&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Garet', sans-serif;
+            color: #ffffff;
+            background-color: #14182b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Changed to column to stack items */
+            justify-content: flex-start; /* Align items to the start of the page */
+            align-items: center;
+            min-height: 100vh; /* Allows body to expand beyond viewport height */
+        }
+
+	img {
+    	    max-width: 100%; /* Ensures image is not wider than its container */
+    	    height: auto; /* Maintains aspect ratio */
+	}
+
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px; /* Added some margin around the container */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Anton', sans-serif;
+            color: #8ac4ca;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        main {
+            text-align: justify;
+            padding: 20px;
+        }
+
+        a {
+            color: #C50c6b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Arduino with Neopixel Ring Workshop</h1>
+        </header>
+        <main>
+            <h2 id="introduction-and-setup">Introduction and Setup</h2>
+<p><strong>Goal:</strong> Recap Arduino basics and set up the workspace.</p>
+
+<p><strong>Activities:</strong></p>
+<ul>
+  <li><strong>Brief review of Arduino Uno setup:</strong> We will begin by familiarising ourselves with the Arduino Uno. It’s similar to the Nano but has more digital input/output pins. For us this isn’t super relevant as we’ll be using 3 pins.</li>
+  <li><strong>Installing the Arduino IDE and Neopixel library:</strong> Ensure the Arduino IDE is installed on your computer. We will also go through the process of adding the Neopixel library via the Library Manager. Search for “Adafruit Neopixel” and install the latest version.</li>
+  <li><strong>Setting up hardware:</strong> Connect the Arduino Uno to your breadboard, then connect the Neopixel ring. Ensure that you have connected the data input pin of the Neopixel to one of the PWM output pins on the Arduino (usually pin 6 for simplicity).</li>
+</ul>
+
+<p><a href="https://www.allaboutcircuits.com/uploads/articles/Arduino_UNO_R3_Pinout.jpg" target="_blank"><img src="https://www.allaboutcircuits.com/uploads/articles/Arduino_UNO_R3_Pinout.jpg" alt="Arduino Uno R3 Pinout" /></a>
+<a href="https://www.allaboutcircuits.com/technical-articles/understanding-arduino-uno-hardware-design/">Understanding Arduino Uno Hardware Design</a><br />
+<a href="https://cdn-shop.adafruit.com/datasheets/WS2812.pdf/">Datasheet for the LED controller</a></p>
+
+<h2 id="understanding-the-neopixel-library">Understanding the Neopixel Library</h2>
+<p><strong>Goal:</strong> Understand how the Neopixel library controls the LED ring.</p>
+
+<p><strong>Activities:</strong></p>
+<ul>
+  <li><strong>Discussing Neopixel library functions and parameters:</strong> The Neopixel library provides a set of functions that allow you to control the LEDs in terms of color and brightness. Functions such as <code class="highlighter-rouge">setPixelColor()</code> and <code class="highlighter-rouge">show()</code> are essential for basic operations.</li>
+  <li><strong>Exploring the documentation:</strong> Navigate the online documentation to identify key functions and how they’re used.</li>
+</ul>
+
+<p><strong>Challenge</strong></p>
+<ul>
+  <li>Understand how to change the color and intensity of individual LEDs using setPixelColor() where color is a combination of red, green, and blue values. This function allows for precise control over each LED’s color on the ring.</li>
+</ul>
+
+<p><strong>Potentially useful functions (fill in the blanks!)</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">begin()</code> - Initializes the pin and sets up the Neopixel strip.</li>
+  <li><code class="highlighter-rouge">show()</code> - Sends the updated color data to the Neopixel ring.</li>
+  <li><code class="highlighter-rouge">setPixelColor(index, color)</code> - Sets the color of a specific LED in the ring.</li>
+  <li><code class="highlighter-rouge">fill(color, firstLED, count)</code> - Fills a number of LEDs with a specified color starting from a particular index.</li>
+  <li><code class="highlighter-rouge">setBrightness()</code></li>
+  <li><code class="highlighter-rouge">clear()</code></li>
+  <li><code class="highlighter-rouge">fill()</code></li>
+</ul>
+
+<p><a href="https://github.com/adafruit/Adafruit_NeoPixel">Adafruit Neopixel Library on GitHub</a><br />
+<a href="https://adafruit.github.io/Adafruit_NeoPixel/html/index.html">Adafruit Neopixel Library Documentation</a><br />
+<a href="https://github.com/scottkildall/NeoPixel-Samples">Adafruit Neopixel Code Snippets</a></p>
+
+<h2 id="dissecting-example-code">Dissecting Example Code</h2>
+<p><strong>Goal:</strong> Apply understanding by analyzing and modifying provided example code.</p>
+
+<p><strong>Activities:</strong></p>
+<ul>
+  <li><strong>Walk through a basic example:</strong> Analyze a simple sketch where the Neopixel ring is set to display a single color across all LEDs.</li>
+  <li><strong>Modifying the example:</strong> Change parameters in the <code class="highlighter-rouge">setPixelColor()</code> function to adjust colors and experiment with <code class="highlighter-rouge">setBrightness()</code> to see the effect on the ring’s luminosity.</li>
+  <li><strong>Pattern creation:</strong> Try turning on LEDs in a specific sequence or pattern to create visual effects like a running light or a color wave.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// NeoPixel Ring simple sketch (c) 2013 Shae Erisson</span>
+<span class="c1">// Released under the GPLv3 license to match the rest of the</span>
+<span class="c1">// Adafruit NeoPixel library</span>
+
+<span class="cp">#include &lt;Adafruit_NeoPixel.h&gt;
+#ifdef __AVR__
+</span> <span class="cp">#include &lt;avr/power.h&gt; // Required for 16 MHz Adafruit Trinket
+#endif
+</span>
+<span class="c1">// Why do we have these #define instructions and how do they differ from regular variables?</span>
+
+<span class="cp">#define PIN        6  // On Trinket or Gemma, suggest changing this to 1
+#define NUMPIXELS 16  // Popular NeoPixel ring size
+</span>
+<span class="c1">// Declare our NeoPixel strip object:</span>
+<span class="c1">// Argument 1 = Number of LEDs in NeoPixel ring</span>
+<span class="c1">// Argument 2 = Arduino pin number (most are valid)</span>
+<span class="c1">// Argument 3 = Pixel type flags, add together as needed:</span>
+<span class="c1">//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)</span>
+<span class="c1">//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)</span>
+<span class="c1">//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)</span>
+<span class="c1">//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)</span>
+<span class="c1">//   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)</span>
+
+<span class="n">Adafruit_NeoPixel</span> <span class="nf">pixels</span><span class="p">(</span><span class="n">NUMPIXELS</span><span class="p">,</span> <span class="n">PIN</span><span class="p">,</span> <span class="n">NEO_GRB</span> <span class="o">+</span> <span class="n">NEO_KHZ800</span><span class="p">);</span>
+
+<span class="cp">#define DELAYVAL 500  // Time (in milliseconds) to pause between pixels
+</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pixels</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>  <span class="c1">// INITIALIZE NeoPixel strip object (REQUIRED)</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pixels</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>  <span class="c1">// Set all pixel colors to 'off'</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUMPIXELS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// For each pixel...</span>
+    <span class="n">pixels</span><span class="p">.</span><span class="n">setPixelColor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pixels</span><span class="p">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">pixels</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>   <span class="c1">// Send the updated pixel colors to the hardware.</span>
+    <span class="n">delay</span><span class="p">(</span><span class="n">DELAYVAL</span><span class="p">);</span> <span class="c1">// Pause before next pass through loop</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="programming-challenge-create-patterns">Programming Challenge: Create Patterns</h2>
+<p><strong>Goal:</strong> Develop custom light patterns and sequences.</p>
+
+<p><strong>Activities:</strong></p>
+<ul>
+  <li><strong>Pattern design:</strong> Design some unique patterns using loops and conditional statements.</li>
+  <li><strong>Dynamic effects:</strong> Think about techniques for creating gradients and other dynamic effects by manipulating delays and colors within the loop.</li>
+</ul>
+
+<p><strong>Challenges:</strong></p>
+<ul>
+  <li>Create a gradient effect that transitions across the Neopixel ring.</li>
+  <li>Develop a “chase” sequence where a single lit LED moves around the ring.</li>
+</ul>
+
+        </main>
+    </div>
+</body>
+
+</html>
