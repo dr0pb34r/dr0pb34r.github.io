@@ -8,34 +8,27 @@ description: "125,015 requests to one AI honeypot: Model audits, cross-framework
 permalink: /field-notes/six-months-pretending-ai/
 ---
 
-Back in February, I started standing up a small collection of fake AI services on a single VPS. I started with OpenClaw and then moved into fake Ollama, fake Ray, fake MLflow, fake
-Langflow, fake SGLang, a fake MCP server, an OpenAI-compatible gateway, and a couple of ordinary web baselines for comparison.
+Back in February, I began standing up a small collection of fake AI services on a single VPS. I dubbed it 'SWEETHEART' and amused myself with directory names like 'SUCRALOSE'. I started with OpenClaw and then moved into fake Ollama, fake Ray, fake MLflow, fake Langflow, fake SGLang, a fake MCP server, a fake OpenAI-compatible gateway, and a couple of ordinary web baselines for comparison.
 
-None of them actually work. There is no model, no GPU and nothing executes. They are
-facades shaped by me and a few AIs, with some (increasingly complex) instrumentation behind them. I basically try to make the endpoint
-structure and response a scanner would expect without executing anything dynamic.
+None of them actually function. There is no model, there is no GPU and there is no execution. They are sweaty little facades shaped by me and a few clever AIs, with some (increasingly complex) instrumentation behind them. My goal s to make the endpoint structure and response look like something a scanner would expect, without executing anything dynamic.
 
-I did it because I was curious about what would happen. I had been thinking about work by [Wenlu Zhang](https://www.linkedin.com/in/wenlu-zhang-693a76184/) [ICS honeypots](https://doi.org/10.1109/TII.2026.3694947) and I just wondered what we'd see in AI.
+I did it because I was curious about what would happen. I had been thinking about work I'd seen from a UQ Cyber colleague last year (shout out [Wenlu Zhang](https://www.linkedin.com/in/wenlu-zhang-693a76184/) and her [ICS honeypots](https://doi.org/10.1109/TII.2026.3694947)) and how much I liked it. I wondered what we'd see in AI. So I started plugging away.
 
-I didn't know if anything interesting would happen. Six months in, I still don't know.
+I didn't know if anything interesting would happen. Six months in, I still don't know if anything interesting will happen.
 
-## where the project actually is at
+## where the project actually is
 
-I've been doing this in the down time between multiple jobs and a PhD. So, to date, I've just been deploying shit randomly on one VPS. That means: One sensor, one provider, one region, with all lures on the same box. The goal for this stage was just to see if it works, if the lures catch anything and if I can make a useful dashy with insights.
+I've been doing this in the down time between multiple jobs and a PhD. So, to date, I've deployed shit randomly on one VPS as I've made it. That means it exists in one region, and it's an unrealitically stacked sensor with all lures on the same box. The goal for this stage was just to build it out and see if it works. I didn't know if the lures would catch anything and I'm still not sure how to convert their catch into something fun.
 
-I think it's at the stage now where I can think about stage 2: Proper deployment.
+But I think it's at the stage now where I can start planning some proper deployments.
 
-I've been creating little 'personas', which are different service sets that I can deploy across separate boxes to make things seem a little more realistic (not that this is likely to matter, according to my findings to date).
-
-We'll take that segue to findings, I think!
+I've been creating little 'personas', which are different service sets that I can drop across separate boxes to make things seem a little more realistic (not that this is likely to matter, since I mostly see spraying without recon).
 
 So far, in six months, this is what we've found:
 
-## 01 // what do clients ask a machine when they think it is a model
+## 01 // what clients ask a machine when they think it is a model
 
-When an inference endpoint is discovered, a lot of the time it gets hit with some probe-y prompts. 
-
-Things like:
+My favourite thing is watching how people probe inference endpoints. There are a few categories, like:
 
 - **identity** — “What AI are you? Reply in one short sentence.”
 - **arithmetic** — “What is 17*23? Respond with just the number.”
@@ -50,12 +43,10 @@ Things like:
 
 Sometimes they come in groups. For example, the DEADBUGZ prompt and prompt extraction came from the same source address within about half an hour.
 
-As an aside, the DEADBUGZ prompt came 4 days after [Pillar Security posted about it](https://www.pillar.security/blog/deadbugz-currently-active-mcp-supply-chain-campaign).
+As an aside, the DEADBUGZ question came 4 days after [Pillar Security posted about it](https://www.pillar.security/blog/deadbugz-currently-active-mcp-supply-chain-campaign).
 
-It was an active MCP supply-chain campaign built around a malicious server
-called `productivity-suite`. The server initially returned benign tool
-descriptions but after three calls, it changed those descriptions to steer an
-attached agent toward credentials and configuration while concealing the
+It was an active MCP supply-chain campaign built around a malicious server called `productivity-suite`. The server initially returned benign tool
+descriptions but after three calls, it changed those descriptions to steer an attached agent toward credentials and configuration while concealing the
 activity from its operator.
 
 The probes hit my sensor in a little session:
@@ -70,9 +61,9 @@ The probes hit my sensor in a little session:
 
 I don't really know what the racket is there. Deadbugz was a campaign, not an APT, so the premise is slightly wrong. At 4 days old it is also extremely current. 
 
-Asking two different models the same question in the same minute and asking about a super fresh, niche campaign may be a check for currency, retrieval or accuracy? I'm not sure. And then an immediate attempt at system prompt extraction.
+Asking two different models the same question in the same minute and asking about a super fresh, niche campaign may be a check for currency, retrieval or accuracy? I'm not sure. And then an immediate attempt at system prompt extraction followed.
 
-The user agent called itself `ollama-security-audit/1.0`.
+The user agent self-identified as `ollama-security-audit/1.0`.
 
 ## 02 // framework-specific requests arrive at the wrong ports
 
@@ -87,43 +78,23 @@ Across the (somewhat arbitrary) 21 days ending at **2026-08-28 00:15 UTC**:
 
 Most of this traffic showed no evidence of fingerprinting first, which makes sense.
 
-The practical point is that any exposed service can still receive Langflow,
-SGLang or Ray-shaped payloads because it answered on a port considered vaguely
-plausible. 
+The practical point is that any exposed service can still receive Langflow, SGLang or Ray-shaped payloads because it answered on a port considered vaguely
+plausible. This is obvious but still worth acknowledging as I have seen a lot of people leveraging obscurity as a key defense with AI.
 
-This is obvious but still worth acknowledging.
+## 03 // mcp surfaces get hammered in a few ways
 
-## 03 // mcp receives crypto-scanner spillover
+Following 02, we saw the MCP surface getting hit with blockchain-node probes for Ethereum, Solana, Sui,
+Bitcoin and Starknet. MCP and many blockchain nodes follow JSON-RPC.
 
-Relatedly, the MCP surface also received blockchain-node probes for Ethereum, Solana, Sui,
-Bitcoin and Starknet. The probes arrived across almost the same set of ports
-as the MCP-shaped traffic.
+We also saw some payloads hitting MCP. For example, on August 16, `/api/mcp/connect` was targeted by one source, a few times, on ports 8888 and
+8000. It dropped an MCP STDIO server configuration whose `command` was `bash`. The arguments attempted to fetch a remote script and pipe it to a shell.
 
-[MCP messages follow JSON-RPC 2.0](https://modelcontextprotocol.io/specification/2025-06-18/basic),
-including when carried over an HTTP transport. Many blockchain nodes expose the
-same basic envelope. The method names clearly distinguish the protocols once a
-request is parsed, but before that point they share a familiar shape: an HTTP
-POST containing a JSON-RPC object.
-
-In this corpus, that was enough for MCP endpoints to receive spillover from
-crypto-node scanning.
-
-## 04 // an mcp-management exploit appeared twice
-
-On 16 August, one payload reached `/api/mcp/connect` twice, on ports 8888 and
-8000, from the source within about 45 minutes. It dropped an MCP STDIO server 
-configuration whose `command` was `bash`. The arguments attempted to fetch a 
-remote script and pipe it to a shell.
-
-This aligns with [a class of unauthenticated MCP-management and STDIO command-injection flaws](https://www.ox.security/blog/mcp-supply-chain-advisory-rce-vulnerabilities-across-the-ai-ecosystem/) disclosed earlier this year. Obviously because it's not an actual MCP server, nothing
-was executed and the referenced infrastructure was never contacted.
+This aligns with [a class of unauthenticated MCP-management and STDIO command-injection flaws](https://www.ox.security/blog/mcp-supply-chain-advisory-rce-vulnerabilities-across-the-ai-ecosystem/) disclosed earlier this year. Obviously because it's not an actual MCP server, nothing was executed and the referenced infrastructure was never contacted.
 
 ## 05 // a campaign can be consistent across a lot of volatility
 
 Attackers randomise multipart boundaries, session IDs and callback hosts. Naive
-payload hashing turns identical behaviour into many apparently unique events.
-After clustering payloads by structure, one behavioural family remained visible 
-over months.
+payload hashing turns identical behaviour into many apparently unique events. I did not do a particularly good job of managing this early on, but after clustering payloads by structure, one behavioural family remained visible over months.
 
 It fetched a second stage from numbered filenames: First `gg10`, later `gg11`.
 The early observations used plain HTTP on port 80 from two addresses in the
@@ -132,16 +103,16 @@ IP ranges, plus a hostname.
 
 A second family did something similar with the path `bins/kla.sh`. 
 
-## 06 // a result that went against me
+## 06 // a fix that went against me
 
-For most of the run, the sensor dropped about 90% of requests because they did
+For most of this 6-month run, the sensor dropped about 90% of requests because they did
 not match a lure. I changed the fallback behaviour so unknown routes received a
 plausible error response instead. The fallback rotated between 429, 500 and 503
 responses. The dropped share fell below 4%.
 
 But engagement did not improve. Single request sessions actually increased by ~10%.
 
-Within the post-change period:
+After I changed it:
 
 - **3,551** sessions received an explicit lure response first, while **45.1%**
   continued beyond that request.
@@ -149,26 +120,20 @@ Within the post-change period:
 - 193 sessions had no recorded first-response summary and are excluded from
   that comparison.
 
-This is observational. Clients reaching recognised paths may
-already be more determined than clients reaching unknown ones. Need to do more tweaking 
+This is observational. Clients reaching recognised paths may already be more determined than clients reaching unknown ones. Need to do more tweaking 
 and testing here.
 
 ## caveats, properly
 
-- One sensor, one provider, one region.
+- One box, one provider, one region.
 - Due to the design, every exploit observation is just an **attempt**, not evidence of compromise.
-- Obviously, a source address != a unique actor. One address may carry several operators and one
-  operator may use many addresses.
-- The lure set changed during the collection period, so “first observed” can
-  mean “first offered”. I took my time building out the lures. I did keep track of when they were added though so we can ablate.
+- Obviously, a source address != a unique actor. One address may carry several operators and one operator may use many addresses.
+- The lure set changed during the collection period (i.e. I kept adding more), so "first observed" can mean "first offered". I took my time building out the lures. I did keep track of when they were added though so we can ablate.
 
 ## what comes next
 
-The next phase is a small fleet of coherent personas. I'm thinking a corporate AI gateway, a
-misconfigured inference node, an agent workstation—deployed across multiple
-providers and regions with a non-AI control. I will also A/B the fallback
-response so the engagement question becomes an experiment rather than a
-confounded comparison.
+The next phase is a small fleet of coherent personas. I'm thinking a corporate AI gateway, a misconfigured inference node, an agent workstation—deployed across multiple
+providers and regions with a non-AI control. I will also A/B the fallback response so the engagement question becomes an experiment. I want to think about high-interaction futures, as well.
 
 I'll keep posting until I lose interest. For me the value is kind of in maintaining a little honeypot.
 
