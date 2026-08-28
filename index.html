@@ -1,34 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dropbear labs</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #14182B;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .center {
-            max-width: 80%;
-            max-height: 80%;
-        }
-        .center img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-            max-height: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div class="center">
-        <img src="wtf.png" alt="lol">
-    </div>
-</body>
-</html>
+---
+layout: default
+title:
+description: field notes, methods and essays about intelligent systems under pressure.
+---
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">protovisions &amp;&amp; protofictions</p>
+    <h1>field notes</h1>
+    <p class="lede">postcards from the hawken building.</p>
+    <a class="text-link" href="#notes">read the field notes ↓</a>
+  </div>
+  <figure class="hero-mark">
+    <img src="{{ '/wtf.png' | relative_url }}" alt="Dropbear Labs: a drop bear at a computer">
+  </figure>
+</section>
+
+<section class="notes" id="notes">
+  <header class="section-head">
+    <p class="eyebrow">dispatches // methods // essays</p>
+    <h2>recent transmissions</h2>
+  </header>
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-card">
+        <p class="post-card-meta">{{ post.eyebrow | default: post.categories | first | default: 'note' }} // {{ post.date | date: "%Y.%m.%d" }}</p>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <a class="text-link" href="{{ post.url | relative_url }}">read note →</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="siblings" aria-label="related studios">
+  <p class="eyebrow">links</p>
+  <div>
+    <a href="https://slobberdog.fyi"><strong>slobberdog studios</strong><span>invention studio</span></a>
+    <a href="https://megwhite.com.au"><strong>meg white</strong><span>whoami</span></a>
+  </div>
+</section>

@@ -1,18 +1,10 @@
 ---
-layout: page
-title: About
+layout: default
+title: about
 permalink: /about/
+description: what dropbear labs is for.
 ---
-
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+<article class="page-shell">
+  <p class="eyebrow">about</p>
+  <h1>dropbear labs is a brain dump for <a href="https://megwhite.com.au">meg white</a>.</h1>
+</article>
