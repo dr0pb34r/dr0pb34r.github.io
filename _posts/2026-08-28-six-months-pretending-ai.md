@@ -8,21 +8,21 @@ description: "125,015 requests to one AI honeypot: Model audits, cross-framework
 permalink: /field-notes/six-months-pretending-ai/
 ---
 
-Back in February, I began standing up a small collection of fake AI services on a single VPS. I dubbed it 'SWEETHEART' and amused myself with directory names like 'SUCRALOSE'. I started with OpenClaw and then moved into fake Ollama, fake Ray, fake MLflow, fake Langflow, fake SGLang, a fake MCP server, a fake OpenAI-compatible gateway, and a couple of ordinary web baselines for comparison.
+Back in February, I began standing up a small collection of fake AI services on a single VPS. I dubbed it ‘SWEETHEART’ and amused myself with directory names like ‘SUCRALOSE’. I started with fake OpenClaw and then moved into fake Ollama, fake Ray, fake MLflow, fake Langflow, fake SGLang, a fake MCP server, a fake OpenAI-compatible gateway and a couple of ordinary web baselines for comparison.
 
-None of them actually function. There is no model, there is no GPU and there is no execution. They are sweaty little facades shaped by me and a few clever AIs, with some (increasingly complex) instrumentation behind them. My goal s to make the endpoint structure and response look like something a scanner would expect, without executing anything dynamic.
+None of them actually function. There is no model, there is no GPU and there is no execution. They are sweaty little facades shaped by me and a few clever AIs, with some (increasingly complex) instrumentation behind them. My goal is to make the endpoint structure and response look like something a scanner would expect, without executing anything dynamic.
 
-I did it because I was curious about what would happen. I had been thinking about work I'd seen from a UQ Cyber colleague last year (shout out [Wenlu Zhang](https://www.linkedin.com/in/wenlu-zhang-693a76184/) and her [ICS honeypots](https://doi.org/10.1109/TII.2026.3694947)) and how much I liked it. I wondered what we'd see in AI. So I started plugging away.
+I did it because I was curious about what would happen. I had been thinking about work I'd seen from a UQ Cyber colleague last year (shout out [Wenlu Zhang](https://www.linkedin.com/in/wenlu-zhang-693a76184/) and her [ICS honeypots](https://doi.org/10.1109/TII.2026.3694947)) and how much I liked it. I was also thinking about how many people were getting pwned via OpenClaw at the time and I wondered what we’d see. So I started plugging away.
 
-I didn't know if anything interesting would happen. Six months in, I still don't know if anything interesting will happen.
+Back then, I didn't know if anything interesting would happen. Six months in, I still don't know if anything interesting will happen.
 
 ## where the project actually is
 
-I've been doing this in the down time between multiple jobs and a PhD. So, to date, I've deployed shit randomly on one VPS as I've made it. That means it exists in one region, and it's an unrealitically stacked sensor with all lures on the same box. The goal for this stage was just to build it out and see if it works. I didn't know if the lures would catch anything and I'm still not sure how to convert their catch into something fun.
+I've been doing this in the down time between multiple jobs and a PhD. So, to date, I've deployed shit progressively  (i.e. as I've made it) on one VPS. That means it exists in one region, and it's an unrealistically stacked sensor with all lures on the same box. The goal for this stage was just to build it out and see if it works. I didn't know if the lures would catch anything and I'm still not sure how to convert their catch into something fun.
 
 But I think it's at the stage now where I can start planning some proper deployments.
 
-I've been creating little 'personas', which are different service sets that I can drop across separate boxes to make things seem a little more realistic (not that this is likely to matter, since I mostly see spraying without recon).
+I've been fashioning little 'personas', which are different service sets that I can drop across separate boxes to make things seem a little more realistic (not that this is likely to matter, since I mostly see spraying without recon).
 
 So far, in six months, this is what we've found:
 
@@ -91,7 +91,7 @@ We also saw some payloads hitting MCP. For example, on August 16, `/api/mcp/conn
 
 This aligns with [a class of unauthenticated MCP-management and STDIO command-injection flaws](https://www.ox.security/blog/mcp-supply-chain-advisory-rce-vulnerabilities-across-the-ai-ecosystem/) disclosed earlier this year. Obviously because it's not an actual MCP server, nothing was executed and the referenced infrastructure was never contacted.
 
-## 05 // a campaign can be consistent across a lot of volatility
+## 04 // a campaign can be consistent across a lot of volatility
 
 Attackers randomise multipart boundaries, session IDs and callback hosts. Naive
 payload hashing turns identical behaviour into many apparently unique events. I did not do a particularly good job of managing this early on, but after clustering payloads by structure, one behavioural family remained visible over months.
@@ -103,7 +103,7 @@ IP ranges, plus a hostname.
 
 A second family did something similar with the path `bins/kla.sh`. 
 
-## 06 // a fix that went against me
+## 05 // a fix that went against me
 
 For most of this 6-month run, the sensor dropped about 90% of requests because they did
 not match a lure. I changed the fallback behaviour so unknown routes received a
