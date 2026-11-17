@@ -1,0 +1,158 @@
+[
+  {
+    "id": "provocations",
+    "number": "01",
+    "title": "Provocations",
+    "subtitle": "A guided meditation for artists in a world of AI.",
+    "path": "/provocations/",
+    "category": "critical practice // guided studio",
+    "accent": "pink",
+    "summary": "What happens when artists treat AI as a material? A guided studio for making, questioning, and developing a practice of your own. Sceptics welcome.",
+    "introduction": "More artists, and fewer venture capitalists, deciding what AI can mean. Provocations is a space to understand the tools, test their limits, and decide for yourself what belongs in your practice. Refusing the technology is a valid outcome, too.",
+    "audience": "Practising and emerging artists, designers, and creative people who want room to experiment and think critically.",
+    "format": "Extended guided studio",
+    "experience": "No AI experience required",
+    "bring": "Your own creative questions and material to work with. Equipment and account requirements will be confirmed with each session.",
+    "outcomes": [
+      "Understand the mechanics behind generative tools and how they shape the work.",
+      "Build a personal reference library and explore how different platforms respond.",
+      "Make your choices, labour, and creative intent visible through a process journal.",
+      "Develop your own position on authorship, mimicry, and when to refuse a tool."
+    ],
+    "outline": [
+      {
+        "title": "Material, not magic",
+        "text": "Open up the machinery: training data, models, prompts, and the gap between an instruction and an output."
+      },
+      {
+        "title": "The glossiest slop on earth",
+        "text": "Make something deliberately generic. Then ask what changes when you bring taste, context, and constraints."
+      },
+      {
+        "title": "Make the effort legible",
+        "text": "Work from your own sketch, photograph, or idea. Keep track of what you direct, delegate, accept, and refuse."
+      },
+      {
+        "title": "AI ART SUCKS",
+        "text": "Question the work together. Decide what deserves to be shared, what needs more work, and what you would rather leave unmade."
+      }
+    ],
+    "waitlist_form_url": "https://dropbear-labs.kit.com/16c07d212a",
+    "session": {
+      "status": "upcoming",
+      "starts_at": "",
+      "ends_at": "",
+      "location": "",
+      "price": "",
+      "booking_url": "",
+      "booking_type": "tickets"
+    },
+    "waitlist_embed_url": "https://dropbear-labs.kit.com/16c07d212a/index.js",
+    "waitlist_form_uid": "16c07d212a",
+    "kit_form_id": "10200846"
+  },
+  {
+    "id": "creative-ai",
+    "number": "02",
+    "title": "Creative AI: material, not magic",
+    "subtitle": "A practical introduction to making with generative AI.",
+    "path": "/workshops/creative-ai/",
+    "category": "creative tools // hands-on workshop",
+    "accent": "cyan",
+    "summary": "Get beyond the default output. Understand how generative tools work, explore their ethical fault lines, and learn to direct them with your own creative intent.",
+    "introduction": "A hands-on introduction that starts with how the systems work and ends with your own experiment. Move from a reference or sketch to a more deliberate result, while keeping the human decisions in view.",
+    "audience": "Artists, designers, educators, students, and curious beginners looking for a grounded introduction to creative AI.",
+    "format": "Practical introductory workshop",
+    "experience": "Beginner friendly",
+    "bring": "A creative idea, sketch, or photograph you have permission to use. Laptop and account requirements will be confirmed before booking.",
+    "outcomes": [
+      "Explain the basic relationship between training data, prompts, and generated output.",
+      "Recognise questions of bias, mimicry, authorship, and personal boundaries.",
+      "Use references and a repeatable calibration process to direct a creative experiment.",
+      "Record your decisions so you can explain what you contributed to the result."
+    ],
+    "outline": [
+      {
+        "title": "Under the hood",
+        "text": "A plain-language introduction to generative systems, with examples across creative media."
+      },
+      {
+        "title": "Ethics and boundaries",
+        "text": "Discuss whose work goes into the tools, what comes out, and where you want to draw your own lines."
+      },
+      {
+        "title": "From default to directed",
+        "text": "Compare an uncalibrated output with a deliberate experiment using your own reference, vocabulary, and constraints."
+      },
+      {
+        "title": "Show your working",
+        "text": "Share what happened, what you changed, and which decisions mattered. The process is part of the work."
+      }
+    ],
+    "waitlist_form_url": "https://dropbear-labs.kit.com/a3494dc7d4",
+    "session": {
+      "status": "upcoming",
+      "starts_at": "",
+      "ends_at": "",
+      "location": "",
+      "price": "",
+      "booking_url": "",
+      "booking_type": "tickets"
+    },
+    "waitlist_embed_url": "https://dropbear-labs.kit.com/a3494dc7d4/index.js",
+    "waitlist_form_uid": "a3494dc7d4",
+    "kit_form_id": "10200856"
+  },
+  {
+    "id": "build-almost-anything",
+    "number": "03",
+    "title": "How to build almost anything with your AI assistant",
+    "subtitle": "Turn “I wish there was a tool for that” into a working project.",
+    "path": "/workshops/build-almost-anything/",
+    "category": "bespoke software // practical systems",
+    "accent": "cyan",
+    "summary": "Use Claude or Codex to make tools that fit the way you work. Learn to scope an idea, give useful context, build in small steps, and check what your assistant has made.",
+    "introduction": "A practical workshop about working with an AI assistant to make bespoke software and systems. Bring a small, real problem: an awkward spreadsheet process, a missing tool, a repetitive task, or an idea you keep putting off.",
+    "audience": "Curious people, creatives, and small teams who want to make useful tools for their own work. You do not need to arrive as a software developer.",
+    "format": "Project-based workshop",
+    "experience": "Start with a small, real problem",
+    "bring": "A laptop and a project idea. Supported tools, accounts, and any subscription requirements will be listed when a session opens.",
+    "outcomes": [
+      "Turn an idea into a small, clear brief with a practical definition of done.",
+      "Give Claude or Codex the context, examples, and constraints it needs.",
+      "Build in reviewable steps, keep a recoverable history, and handle mistakes.",
+      "Check behaviour with real examples and understand what needs attention before sharing a tool."
+    ],
+    "outline": [
+      {
+        "title": "Find the useful little thing",
+        "text": "Choose a manageable problem. Describe who the tool is for, what it should do, and what it can leave out."
+      },
+      {
+        "title": "Brief your assistant",
+        "text": "Supply context, representative data, constraints, and examples. Make the plan concrete before building."
+      },
+      {
+        "title": "Build, inspect, repeat",
+        "text": "Work in small steps. Read the result, try it yourself, and keep a way back when something breaks."
+      },
+      {
+        "title": "Make it usable",
+        "text": "Test the awkward cases. Think through private data, permissions, costs, and how you will maintain the thing you made."
+      }
+    ],
+    "waitlist_form_url": "https://dropbear-labs.kit.com/0b04398cb9",
+    "session": {
+      "status": "upcoming",
+      "starts_at": "",
+      "ends_at": "",
+      "location": "",
+      "price": "",
+      "booking_url": "",
+      "booking_type": "tickets"
+    },
+    "waitlist_embed_url": "https://dropbear-labs.kit.com/0b04398cb9/index.js",
+    "waitlist_form_uid": "0b04398cb9",
+    "kit_form_id": "10200863"
+  }
+]
