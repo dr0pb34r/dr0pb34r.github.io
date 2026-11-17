@@ -82,6 +82,7 @@
 .session-facts dt { color: var(--cyan); margin-bottom: .3rem; }
 .session-facts dd { margin: 0; }
 .facilitator-note { margin-top: 2rem; padding: 0 1.75rem; }
+.facilitator-photo { display: block; width: 100%; max-width: 12rem; height: auto; margin-bottom: 1.5rem; border: 1px solid var(--line); }
 .facilitator-note h3 { font-size: 1.3rem; }
 .facilitator-note p:not(.eyebrow) { color: var(--soft); font-size: .75rem; }
 .other-courses { padding: 1rem 0 5rem; }

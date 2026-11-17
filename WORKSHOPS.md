@@ -1,4 +1,4 @@
-# workshops, courses, and postcards
+# workshops, courses and postcards
 
 public pages:
 
@@ -23,7 +23,7 @@ confirmation enabled and auto-confirm disabled. no broadcast has been sent.
 | provocations studio waitlist | 10200846 | https://dropbear-labs.kit.com/16c07d212a |
 | agent overlord waitlist | 10201027 | https://dropbear-labs.kit.com/9900d8bbec |
 
-form share urls, embed urls, and uids are in `_data/courses.json` and
+form share urls, embed urls and uids are in `_data/courses.json` and
 `_data/workshops.json`. keep those identifiers exactly as returned by kit.
 no api secret belongs in this public repository.
 
@@ -47,7 +47,7 @@ do not infer their choice.
 ## waitlist preferences
 
 each waitlist has two optional custom fields: preferred delivery and preferred
-day. the website offers suggestions for in person, online, weekdays, or no
+day. the website offers suggestions for in person, online, weekdays or no
 preference. readers can also enter a more specific preference.
 
 kit stores separate fields for each offering, so a choice on one waitlist does
@@ -71,14 +71,14 @@ edit the offering's `session` in `_data/courses.json`:
 - `open`: show the real external booking or registration link
 - `sold_out`: show filled-session or filled-cohort wording and the waitlist
 
-for a confirmed session provide `starts_at`, `ends_at`, `location`, and `price`.
+for a confirmed session provide `starts_at`, `ends_at`, `location` and `price`.
 use iso dates with the brisbane offset `+10:00`. multi-day and multi-week
 courses show both start and end dates. for `open`, add a real https `booking_url`.
 `booking_type` is `tickets` or `registration`. the booking provider handles
 payments and capacity; update the status manually when a session fills.
 
 keep unconfirmed next-cohort details blank. the next cohorts currently have no
-confirmed dates, prices, venues, or booking links. expired sessions return to
+confirmed dates, prices, venues or booking links. expired sessions return to
 the catalogue waitlist notice.
 
 the catalogue's current notice is `sessions filled - waitlist open`, reflecting
@@ -94,7 +94,7 @@ bundle exec ruby scripts/check_workshops.rb
 bundle exec jekyll build --destination .preview
 ```
 
-check the catalogue, each offering, and postcards on desktop and mobile. test
+check the catalogue, each offering and postcards on desktop and mobile. test
 both postcard interest choices and confirm that waitlist preferences remain
 optional. source is published through the existing github pages repository.
 

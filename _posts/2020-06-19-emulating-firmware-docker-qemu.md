@@ -19,7 +19,7 @@ I've done a basic and awful job of automating it so you can see how the pieces w
 
 ## How to do the thing
 
-[I've made three scripts](https://github.com/unmeg/docker-emu): one to prepare your environment, one to build the Dockerfile and container image, and one to run the container (I've only included two run commands but obviously you could store whatever you wanted in there).
+[I've made three scripts](https://github.com/unmeg/docker-emu): one to prepare your environment, one to build the Dockerfile and container image and one to run the container (I've only included two run commands but obviously you could store whatever you wanted in there).
 
 I've presented them this way so it's easy to follow. I don't think the run script is required.
 

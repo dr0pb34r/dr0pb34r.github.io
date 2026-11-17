@@ -7,7 +7,7 @@ from GitHub Pages.
 
 Posts live in `_posts/` and use the shared `post` layout. New posts should
 include a short `description`, a lowercase `title`, an `eyebrow` using the
-`//` house style, and an explicit `permalink`.
+`//` house style and an explicit `permalink`.
 
 The current content families are:
 

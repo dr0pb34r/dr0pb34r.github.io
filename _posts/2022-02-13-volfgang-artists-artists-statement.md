@@ -29,14 +29,14 @@ In said space, there is a broad practice of selling AI’s potential and eagerly
 And that’s the full context for creating an overstated AI fashion/art haus on the back of stick figures. That’s it – that’s the whole joke. Thank you, thank you, I’ll be here until the apocalypse (2023).
 
 ## Technical stuff
-It’s not even worth mentioning, but for those who wanted to know, my VOLFGANG project has two models: Volfgang (Creative Director) is a simple SR-GAN that has consumed the Google QuickDraw dataset, and Baptiste (Assistant) is a mish-mash of things (CLIP/VQ-GAN) that has consumed a mish-mash of the entire history of human art. Then there’s some post-processing (vectorisation/super resolution) at the end for good measure.
+It’s not even worth mentioning, but for those who wanted to know, my VOLFGANG project has two models: Volfgang (Creative Director) is a simple SR-GAN that has consumed the Google QuickDraw dataset, and Baptiste (ai familiar) is a mish-mash of things (CLIP/VQ-GAN) that has consumed a mish-mash of the entire history of human art. Then there’s some post-processing (vectorisation/super resolution) at the end for good measure.
 
 An example of the !?!?! ART !?!:
 
-Volfgang (Creative Director) |  Baptiste (Assistant)
+Volfgang (Creative Director) |  Baptiste (ai familiar)
 :---------------------------:|:---------------------------:
 ![Volfgang: Pig](/assets/images/archive/test_8.jpg?raw=true)  |  ![Baptiste: Whatever, man](/assets/images/archive/Baptiste-drug-cat.png?raw=true)
 
 ## What’s next
 My intentions are to: 
-a) flesh out the offerings from both ARTISTES (more products for Volfgang, and some canvas/postcard options for Baptiste) and amuse myself with writing the appropriate copy, b) totally forget about this project now that I have made a basic and terrible version of it, thereby briefly amusing myself, or c) some half-arsed combination of the two.
+a) flesh out the offerings from both ARTISTES (more products for Volfgang, and some canvas/postcard options for Baptiste) and amuse myself with writing the appropriate copy, b) totally forget about this project now that I have made a basic and terrible version of it, thereby briefly amusing myself or c) some half-arsed combination of the two.

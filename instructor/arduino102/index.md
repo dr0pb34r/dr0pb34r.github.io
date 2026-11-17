@@ -24,7 +24,7 @@ permalink: /instructor/arduino102/
 - **Exploring the documentation:** Navigate the online documentation to identify key functions and how they're used.
 
 **Challenge**
-- Understand how to change the color and intensity of individual LEDs using setPixelColor() where color is a combination of red, green, and blue values. This function allows for precise control over each LED's color on the ring.
+- Understand how to change the color and intensity of individual LEDs using setPixelColor() where color is a combination of red, green and blue values. This function allows for precise control over each LED's color on the ring.
 
 **Potentially useful functions (fill in the blanks!)**
 - `begin()` - Initializes the pin and sets up the Neopixel strip.

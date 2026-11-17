@@ -8,33 +8,33 @@
     "category": "bespoke software // intelligent systems",
     "accent": "cyan",
     "summary": "learn how to work with ai to solve your problems and bring your visions to life. build bespoke software and intelligent systems shaped around the way you work.",
-    "introduction": "work with ai to turn your problems, ideas, and ambitions into bespoke software and intelligent systems. learn how to give your assistant useful context, shape a practical plan, and build something that brings your vision to life — one reviewable step at a time.",
-    "audience": "curious people, creatives, and small teams who want to make useful tools for their own work. you do not need to arrive as a software developer.",
+    "introduction": "work with ai to turn your problems, ideas and ambitions into bespoke software and intelligent systems. learn how to give your ai familiar useful context, shape a practical plan and build something that brings your vision to life — one reviewable step at a time.",
+    "audience": "curious people, creatives and small teams who want to make useful tools for their own work. you do not need to arrive as a software developer.",
     "format": "one-day workshop",
     "experience": "start with a small, real problem",
-    "bring": "a laptop and a project idea. supported tools, accounts, and any subscription requirements will be listed when a session opens.",
+    "bring": "a laptop and a project idea. supported tools, accounts and any subscription requirements will be listed when a session opens.",
     "outcomes": [
       "turn an idea into a small, clear brief with a practical definition of done.",
-      "give claude or codex the context, examples, and constraints it needs.",
-      "build in reviewable steps, keep a recoverable history, and handle mistakes.",
+      "give claude or codex the context, examples and constraints it needs.",
+      "build in reviewable steps, keep a recoverable history and handle mistakes.",
       "check behaviour with real examples and understand what needs attention before sharing a tool."
     ],
     "outline": [
       {
         "title": "find the useful little thing",
-        "text": "choose a manageable problem. describe who the tool is for, what it should do, and what it can leave out."
+        "text": "choose a manageable problem. describe who the tool is for, what it should do and what it can leave out."
       },
       {
-        "title": "brief your assistant",
-        "text": "supply context, representative data, constraints, and examples. make the plan concrete before building."
+        "title": "brief your ai familiar",
+        "text": "supply context, representative data, constraints and examples. make the plan concrete before building."
       },
       {
         "title": "build, inspect, repeat",
-        "text": "work in small steps. read the result, try it yourself, and keep a way back when something breaks."
+        "text": "work in small steps. read the result, try it yourself and keep a way back when something breaks."
       },
       {
         "title": "make it usable",
-        "text": "test the awkward cases. think through private data, permissions, costs, and how you will maintain the thing you made."
+        "text": "test the awkward cases. think through private data, permissions, costs and how you will maintain the thing you made."
       }
     ],
     "waitlist_form_url": "https://dropbear-labs.kit.com/0b04398cb9",
@@ -61,15 +61,15 @@
     "path": "/workshops/creative-ai/",
     "category": "creative tools // hands-on workshop",
     "accent": "cyan",
-    "summary": "get beyond the default output. understand how generative tools work, explore their ethical fault lines, and learn to direct them with your own creative intent.",
+    "summary": "get beyond the default output. understand how generative tools work, explore their ethical fault lines and learn to direct them with your own creative intent.",
     "introduction": "a hands-on introduction that starts with how the systems work and ends with your own experiment. move from a reference or sketch to a more deliberate result, while keeping the human decisions in view.",
-    "audience": "artists, designers, educators, students, and curious beginners looking for a grounded introduction to creative ai.",
+    "audience": "artists, designers, educators, students and curious beginners looking for a grounded introduction to creative ai.",
     "format": "one-day workshop",
     "experience": "beginner friendly",
-    "bring": "a creative idea, sketch, or photograph you have permission to use. laptop and account requirements will be confirmed before booking.",
+    "bring": "a creative idea, sketch or photograph you have permission to use. laptop and account requirements will be confirmed before booking.",
     "outcomes": [
-      "explain the basic relationship between training data, prompts, and generated output.",
-      "recognise questions of bias, mimicry, authorship, and personal boundaries.",
+      "explain the basic relationship between training data, prompts and generated output.",
+      "recognise questions of bias, mimicry, authorship and personal boundaries.",
       "use references and a repeatable calibration process to direct a creative experiment.",
       "record your decisions so you can explain what you contributed to the result."
     ],
@@ -80,15 +80,15 @@
       },
       {
         "title": "ethics and boundaries",
-        "text": "discuss whose work goes into the tools, what comes out, and where you want to draw your own lines."
+        "text": "discuss whose work goes into the tools, what comes out and where you want to draw your own lines."
       },
       {
         "title": "from default to directed",
-        "text": "compare an uncalibrated output with a deliberate experiment using your own reference, vocabulary, and constraints."
+        "text": "compare an uncalibrated output with a deliberate experiment using your own reference, vocabulary and constraints."
       },
       {
         "title": "show your working",
-        "text": "share what happened, what you changed, and which decisions mattered. the process is part of the work."
+        "text": "share what happened, what you changed and which decisions mattered. the process is part of the work."
       }
     ],
     "waitlist_form_url": "https://dropbear-labs.kit.com/a3494dc7d4",
@@ -115,18 +115,18 @@
     "path": "/courses/agent-overlord/",
     "category": "agentic systems // practical course",
     "accent": "pink",
-    "summary": "a course for people who want to set up agentic systems in their life. design useful agents, give them clear boundaries, and build workflows you can understand, supervise, and improve.",
-    "introduction": "go beyond a single conversation with an ai assistant. learn how to design agentic systems around real parts of your life: deciding what to delegate, connecting the right tools, keeping control of permissions, and checking that the system does what you intended.",
+    "summary": "a course for people who want to set up agentic systems in their life. design useful agents, give them clear boundaries and build workflows you can understand, supervise and improve.",
+    "introduction": "go beyond a single conversation with an ai agent. learn how to design agentic systems around real parts of your life: deciding what to delegate, connecting the right tools, keeping control of permissions and checking that the system does what you intended.",
     "idea_heading": "put your agents to work.",
-    "audience": "curious people, creatives, and small teams ready to invest time in building and supervising their own agentic systems.",
+    "audience": "curious people, creatives and small teams ready to invest time in building and supervising their own agentic systems.",
     "format": "extended practical course",
     "experience": "bring a workflow you want to improve",
-    "bring": "a laptop and a real workflow to explore. the course length, supported tools, and account requirements will be confirmed before bookings open.",
+    "bring": "a laptop and a real workflow to explore. the course length, supported tools and account requirements will be confirmed before bookings open.",
     "outcomes": [
       "identify tasks worth delegating and decide what should stay under your control.",
-      "design clear roles, instructions, and boundaries for your agents.",
+      "design clear roles, instructions and boundaries for your agents.",
       "connect tools and information with deliberate permissions and a way to recover.",
-      "evaluate an agentic workflow, inspect failures, and improve it over time."
+      "evaluate an agentic workflow, inspect failures and improve it over time."
     ],
     "outline": [
       {
@@ -135,15 +135,15 @@
       },
       {
         "title": "design the system",
-        "text": "define agent roles, the context they need, and when they should ask you for a decision."
+        "text": "define agent roles, the context they need and when they should ask you for a decision."
       },
       {
         "title": "connect and supervise",
-        "text": "bring tools into the workflow with clear permissions, visible actions, and practical recovery points."
+        "text": "bring tools into the workflow with clear permissions, visible actions and practical recovery points."
       },
       {
         "title": "test, live with it, improve it",
-        "text": "try real scenarios, examine failures, and develop a routine for checking and maintaining your system."
+        "text": "try real scenarios, examine failures and develop a routine for checking and maintaining your system."
       }
     ],
     "waitlist_form_url": "https://dropbear-labs.kit.com/9900d8bbec",
@@ -169,30 +169,30 @@
     "path": "/provocations/",
     "category": "artists’ studio // 8-week intensive",
     "accent": "pink",
-    "summary": "an intensive 8-week course and studio for artists. work through weekly provocations, make and question your own work, and develop a creative practice with ai as a material. sceptics welcome.",
-    "introduction": "an intensive 8-week studio for artists who want to understand the tools, test their limits, and decide what belongs in their practice. start with the mechanics, develop work through weekly provocations and shared critique, and make your own case for what is worth exhibiting — or refusing.",
-    "audience": "practising and emerging artists, designers, and creative people who want room to experiment and think critically.",
+    "summary": "an intensive 8-week course and studio for artists. work through weekly provocations, make and question your own work and develop a creative practice with ai as a material. sceptics welcome.",
+    "introduction": "an intensive 8-week studio for artists who want to understand the tools, test their limits and decide what belongs in their practice. start with the mechanics, develop work through weekly provocations and shared critique and make your own case for what is worth exhibiting — or refusing.",
+    "audience": "practising and emerging artists, designers and creative people who want room to experiment and think critically.",
     "format": "intensive 8-week course // studio for artists",
     "experience": "no ai experience required",
     "bring": "your own creative questions and material to work with. equipment and account requirements will be confirmed with each session.",
     "outcomes": [
       "understand the mechanics behind generative tools and how they shape the work.",
       "build a personal reference library and explore how different platforms respond.",
-      "make your choices, labour, and creative intent visible through a process journal.",
-      "develop your own position on authorship, mimicry, and when to refuse a tool."
+      "make your choices, labour and creative intent visible through a process journal.",
+      "develop your own position on authorship, mimicry and when to refuse a tool."
     ],
     "outline": [
       {
         "title": "week 1 // material, not magic",
-        "text": "a technical deep-dive into training data, models, prompts, and reference libraries. open up the mechanics and the ethical questions that will shape your studio practice."
+        "text": "a technical deep-dive into training data, models, prompts and reference libraries. open up the mechanics and the ethical questions that will shape your studio practice."
       },
       {
         "title": "weeks 2–7 // guided studio",
-        "text": "respond to weekly provocations: the glossiest slop on earth, mimesis, make the effort legible, aura & context, edges & refusals, and indefense of ai. make work, share your process, and develop it through critical conversation."
+        "text": "respond to weekly provocations: the glossiest slop on earth, mimesis, make the effort legible, aura & context, edges & refusals and indefense of ai. make work, share your process and develop it through critical conversation."
       },
       {
         "title": "week 8 // ai art sucks",
-        "text": "bring your work and your position to a final collective critique. decide what deserves to be exhibited, what needs more work, and what you would rather leave unmade."
+        "text": "bring your work and your position to a final collective critique. decide what deserves to be exhibited, what needs more work and what you would rather leave unmade."
       }
     ],
     "waitlist_form_url": "https://dropbear-labs.kit.com/16c07d212a",

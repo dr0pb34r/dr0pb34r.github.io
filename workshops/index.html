@@ -1,7 +1,7 @@
 ---
 layout: default
 title: workshops and courses
-description: short workshops and longer courses with meg white at dropbear labs. build with a magic computer, explore creative ai, join provocations, or become an agent overlord.
+description: short workshops and longer courses with meg white at dropbear labs. build with a magic computer, explore creative ai, join provocations or become an agent overlord.
 permalink: /workshops/
 workshop_styles: true
 ---
@@ -23,15 +23,15 @@ workshop_styles: true
     {% assign workshops = site.data.courses | where: 'type', 'workshop' %}{% for course in workshops %}{% include offering-card.html course=course %}{% endfor %}
   </section>
   <section class="offering-group" id="courses" aria-labelledby="courses-heading">
-    <header class="offering-group-header"><h2 id="courses-heading">courses</h2><p>bigger investments. time to build, test, reflect, and develop your practice.</p></header>
+    <header class="offering-group-header"><h2 id="courses-heading">courses</h2><p>longer intensives. time to build, test, reflect and develop your practice.</p></header>
     {% assign courses = site.data.courses | where: 'type', 'course' %}{% for course in courses %}{% include offering-card.html course=course %}{% endfor %}
   </section>
 </section>
 <section class="wire-banner">
   <div><p class="eyebrow">postcards // from the lab</p><h2>catch the<br>next one.</h2></div>
-  <div><p>workshops, courses, or other transmissions. choose what you want to hear about.</p><a class="workshop-button" href="{{ '/updates/' | relative_url }}">get postcards <span aria-hidden="true">→</span></a><p class="small-print">spam-free. unsubscribe any time.</p></div>
+  <div><p>workshops, courses or other transmissions. choose what you want to hear about.</p><a class="workshop-button" href="{{ '/updates/' | relative_url }}">get postcards <span aria-hidden="true">→</span></a><p class="small-print">spam-free. unsubscribe any time.</p></div>
 </section>
 <section class="workshop-bottom-grid">
-  <div><p class="eyebrow">made for curious people</p><h2>come with questions.</h2><p>you don’t need to be convinced by ai to get something out of these workshops. we’ll make space for the mechanics, the possibilities, and the uncomfortable bits.</p><p>dropbear labs workshops are independently run by meg white. dates and venues will be listed here as they’re confirmed.</p></div>
-  <div class="workshop-faq"><details><summary>what if nothing is booked yet?</summary><p>each page stays here between sessions. join the waitlist for the workshop or course you’re interested in, or sign up for postcards. a waitlist signup is an expression of interest, not a ticket or a guaranteed place.</p></details><details><summary>how do bookings and tickets work?</summary><p>when a session opens, its page will show the date, location, price, and a link to book or register. payment happens through the linked booking service.</p></details><details><summary>can i book something for my team?</summary><p><a href="mailto:{{ site.data.workshops.contact_email }}?subject=workshop%20enquiry">email meg</a> with your group, idea, and preferred timing. we can work out a useful starting point.</p></details></div>
+  <div><p class="eyebrow">made for curious people</p><h2>come with questions.</h2><p>you don’t need to be convinced by ai to get something out of these workshops. we’ll make space for the mechanics, the possibilities and the uncomfortable bits.</p><p>dropbear labs workshops are independently run by meg white. dates and venues will be listed here as they’re confirmed.</p></div>
+  <div class="workshop-faq"><details><summary>what if nothing is booked yet?</summary><p>each page stays here between sessions. join the waitlist for the workshop or course you’re interested in or sign up for postcards. a waitlist signup is an expression of interest, not a ticket or a guaranteed place.</p></details><details><summary>how do bookings and tickets work?</summary><p>when a session opens, its page will show the date, location, price and a link to book or register. payment happens through the linked booking service.</p></details><details><summary>can i book something for my team?</summary><p><a href="mailto:{{ site.data.workshops.contact_email }}?subject=workshop%20enquiry">email meg</a> with your group, idea and preferred timing. we can work out a useful starting point.</p></details></div>
 </section>

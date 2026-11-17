@@ -10,14 +10,14 @@
 
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
+# you will see them accessed via {{ site.title }}, {{ site.email }} and so on.
+# You can create any custom variable you would like and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "dropbear labs"
 email: "hey@megwhite.com.au"
 description: >-
   field notes, methods and essays about intelligent systems under pressure:
-  how they behave, how we measure them, and how they redistribute agency.
+  how they behave, how we measure them and how they redistribute agency.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://dropbearlabs.io"
 author: "meg white"
