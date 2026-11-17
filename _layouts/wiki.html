@@ -1,0 +1,185 @@
+---
+layout: default
+---
+<div class="wiki-layout">
+  <!-- Sidebar Navigation & Search -->
+  <aside class="wiki-sidebar">
+    <div class="wiki-nav-title">Search Vault</div>
+    <input type="text" id="wiki-search" class="wiki-search-box" placeholder="Filter notes..." aria-label="Search Wiki Notes">
+    
+    <div class="wiki-nav-title" style="margin-top: 20px;">Notes Directory</div>
+    <ul class="wiki-tree-list" id="wiki-note-list">
+      <li class="wiki-tree-item {% if page.url == '/wiki/' %}active{% endif %}">
+        <a href="/wiki/">🏠 Wiki Home</a>
+      </li>
+      {% assign sorted_pages = site.pages | sort: "title" %}
+      {% for p in sorted_pages %}
+        {% if p.path contains 'wiki/' and p.name != 'index.md' %}
+          <li class="wiki-tree-item {% if p.url == page.url %}active{% endif %}" data-title="{{ p.title | downcase }}" data-url="{{ p.url }}">
+            <a href="{{ p.url }}">📄 {{ p.title | default: p.name | replace: ".md", "" }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <!-- Wiki Content Area -->
+  <article class="wiki-article">
+    <div class="cyber-card">
+      <header class="wiki-meta-panel">
+        <div>
+          <h1 style="border: none; padding: 0; margin: 0; font-size: 2.2rem; text-shadow: var(--glow-teal);">
+            {{ page.title | default: page.name | replace: ".md", "" }}
+          </h1>
+          <p style="font-size: 0.8rem; color: hsl(var(--text-muted)); font-family: var(--font-mono); margin: 5px 0 0 0;">
+            PATH: {{ page.path }}
+          </p>
+        </div>
+        <div style="text-align: right;">
+          <span class="cyber-tag">WIKI NODE</span>
+        </div>
+      </header>
+
+      <!-- Main Text Body -->
+      <div class="page-content" id="wiki-content">
+        {{ content }}
+      </div>
+
+      <!-- Backlinks Section -->
+      <div class="wiki-links-panel">
+        <h3 class="wiki-nav-title" style="color: hsl(var(--neon-teal)); border-bottom: 1px solid hsla(var(--neon-teal), 0.1); padding-bottom: 8px;">Backlinks</h3>
+        <div class="wiki-links-grid">
+          {% assign backlink_count = 0 %}
+          {% for p in site.pages %}
+            {% if p.path contains 'wiki/' and p.url != page.url and p.name != 'index.md' %}
+              {% capture link_pattern_1 %}[[{{ page.title }}]]{% endcapture %}
+              {% capture link_pattern_2 %}[[{{ page.title }}|{% endcapture %}
+              {% capture page_basename %}{{ page.name | replace: ".md", "" }}{% endcapture %}
+              {% capture link_pattern_3 %}[[{{ page_basename }}]]{% endcapture %}
+              {% capture link_pattern_4 %}[[{{ page_basename }}|{% endcapture %}
+              
+              {% if p.content contains link_pattern_1 or p.content contains link_pattern_2 or p.content contains link_pattern_3 or p.content contains link_pattern_4 %}
+                <a href="{{ p.url }}" class="wiki-link-card">
+                  <div class="wiki-link-card-title">{{ p.title | default: p.name | replace: ".md", "" }}</div>
+                  <div class="wiki-link-card-desc">References this note</div>
+                </a>
+                {% assign backlink_count = backlink_count | plus: 1 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% if backlink_count == 0 %}
+            <p style="font-size: 0.85rem; color: hsl(var(--text-muted)); font-style: italic; margin: 0;">No direct backlinks to this note.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- Wiki Scripts -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Wiki Search Filtering
+    const searchInput = document.getElementById("wiki-search");
+    const noteItems = document.querySelectorAll("#wiki-note-list .wiki-tree-item");
+
+    searchInput.addEventListener("input", function() {
+      const query = searchInput.value.toLowerCase().trim();
+      noteItems.forEach(item => {
+        // Skip wiki home link
+        if (item.querySelector("a").textContent.includes("Wiki Home")) return;
+        
+        const title = item.getAttribute("data-title") || "";
+        if (title.includes(query)) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+
+    // 2. Client-side Wikilinks Parser
+    const contentEl = document.getElementById("wiki-content");
+    if (contentEl) {
+      // Fetch the compiled wiki index to resolve note names
+      fetch('/wiki_index.json')
+        .then(response => response.json())
+        .then(wikiIndex => {
+          // Build lookup maps for case-insensitive resolution
+          // Keys: note titles, filenames, and lowercase versions of both
+          const urlMap = {};
+          
+          wikiIndex.forEach(note => {
+            const pathParts = note.path.split('/');
+            const filename = pathParts[pathParts.length - 1];
+            const nameWithoutExt = filename.replace(/\.md$/i, '');
+            
+            // Map standard titles and filenames to their URLs
+            if (note.title) {
+              urlMap[note.title.toLowerCase()] = note.url;
+            }
+            urlMap[nameWithoutExt.toLowerCase()] = note.url;
+            urlMap[decodeURIComponent(nameWithoutExt).toLowerCase()] = note.url;
+          });
+
+          // Regex to match [[Note Name]] or [[Note Name|Alias]]
+          // group 1: target note, group 2: optional display alias
+          const wikiLinkRegex = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+          
+          // Helper to process text nodes without breaking HTML tags
+          function parseWikiLinks(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const text = node.textContent;
+              if (wikiLinkRegex.test(text)) {
+                wikiLinkRegex.lastIndex = 0; // reset regex
+                
+                const fragment = document.createDocumentFragment();
+                let lastIndex = 0;
+                let match;
+                
+                while ((match = wikiLinkRegex.exec(text)) !== null) {
+                  // Add plain text preceding the match
+                  if (match.index > lastIndex) {
+                    fragment.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+                  }
+                  
+                  const targetNote = match[1].trim();
+                  const alias = match[2] ? match[2].trim() : targetNote;
+                  const lookupKey = targetNote.toLowerCase();
+                  
+                  const link = document.createElement("a");
+                  if (urlMap[lookupKey]) {
+                    link.href = urlMap[lookupKey];
+                    link.className = "wiki-link-resolved";
+                    link.textContent = alias;
+                  } else {
+                    // Broken link (red link)
+                    link.className = "wiki-link-broken";
+                    link.title = `Note "${targetNote}" does not exist yet.`;
+                    link.textContent = alias;
+                  }
+                  
+                  fragment.appendChild(link);
+                  lastIndex = wikiLinkRegex.lastIndex;
+                }
+                
+                // Add remaining text
+                if (lastIndex < text.length) {
+                  fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                }
+                
+                node.parentNode.replaceChild(fragment, node);
+              }
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'A' && node.tagName !== 'CODE' && node.tagName !== 'PRE') {
+              // Recurse into children, but skip links and code blocks
+              const children = Array.from(node.childNodes);
+              children.forEach(child => parseWikiLinks(child));
+            }
+          }
+          
+          parseWikiLinks(contentEl);
+        })
+        .catch(err => console.error("Error loading wiki index for linking:", err));
+    }
+  });
+</script>

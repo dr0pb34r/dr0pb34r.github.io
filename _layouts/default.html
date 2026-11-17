@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {% if page.title %}
+    <title>{{ page.title }} | dropbear labs</title>
+  {% else %}
+    <title>dropbear labs // research portal</title>
+  {% endif %}
+  
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}dropbear labs is Meaghan White's personal research lab, exploring AI honeypots, creative computing, security, and physical tech.{% endif %}">
+  
+  <!-- SEO & OpenGraph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}dropbear labs{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Personal research lab exploring AI honeypots, security, and physical tech.{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <!-- Favicon placeholder or custom icon -->
+  <link rel="icon" type="image/png" href="/wtf.png">
+</head>
+<body>
+  <div class="app-container">
+    <header class="site-header">
+      <div class="nav-container">
+        <div class="site-brand">
+          <a href="/">dropbear labs</a>
+        </div>
+        <nav class="site-nav">
+          <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+          <a href="/about/" {% if page.url == "/about/" %}class="active"{% endif %}>About</a>
+          <a href="/blog/" {% if page.url contains "/blog/" or page.layout == "post" %}class="active"{% endif %}>Field Notes</a>
+          <a href="/wiki/" {% if page.url contains "/wiki/" or page.layout == "wiki" %}class="active"{% endif %}>Wiki</a>
+          <a href="/workshops/" {% if page.url contains "/workshops/" or page.layout == "workshop" %}class="active"{% endif %}>Workshops</a>
+          <a href="/workwithme/">Work With Me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content-wrapper">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div>
+          <p style="margin-bottom: 5px;">&copy; {{ "now" | date: "%Y" }} dropbear labs // Meaghan White</p>
+          <p style="font-size: 0.75rem; color: hsl(var(--text-muted)); font-family: var(--font-mono);">status: online // building in public</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/dr0pb34r" target="_blank" rel="noopener">GitHub</a>
+          <a href="/about/">About</a>
+          <a href="/workwithme/">Work With Me</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

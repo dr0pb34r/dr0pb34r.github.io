@@ -1,0 +1,91 @@
+---
+layout: default
+title: "Workshops Portal"
+permalink: /workshops/
+---
+<div style="max-width: 1000px; margin: 0 auto;">
+  <header style="margin-bottom: 40px; text-align: center;">
+    <h1 style="border: none; padding-bottom: 0; margin-bottom: 10px; font-size: 3rem;">Workshops & Guides</h1>
+    <p style="font-family: var(--font-display); color: hsl(var(--text-muted)); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+      Educational material, hardware lab guides, and slides
+    </p>
+  </header>
+
+  <div class="grid-2">
+    <!-- Arduino 102 Workshop Card -->
+    <div class="cyber-card workshop-card">
+      <div>
+        <div class="workshop-meta">PHYSICAL COMPUTING // SYSTEM HARDWARE</div>
+        <h2 style="border: none; padding: 0; margin: 5px 0 10px 0; font-size: 1.5rem;">
+          <a href="/workshops/arduino102/">Arduino 102: Neopixel Ring Control</a>
+        </h2>
+        <p style="font-size: 0.95rem; color: hsl(var(--text-muted)); margin-bottom: 20px;">
+          Learn microcontroller basics, install Adafruit libraries, write loops for customizable LED ring behaviors, and design responsive light structures. Includes hardware schematics and code samples.
+        </p>
+        <div style="margin-bottom: 20px;">
+          <span class="cyber-tag">Level: Intermediate</span>
+          <span class="cyber-tag" style="background-color: hsla(var(--neon-teal), 0.1); color: hsl(var(--neon-teal)); border-color: hsla(var(--neon-teal), 0.2);">Hardware: Arduino Uno R3</span>
+        </div>
+      </div>
+      <div>
+        <a href="/workshops/arduino102/" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          Open Guide
+        </a>
+      </div>
+    </div>
+
+    <!-- AI & Creative Practice Workshop Card -->
+    <div class="cyber-card workshop-card">
+      <div>
+        <div class="workshop-meta">AI RESEARCH // CREATIVE COMPUTING</div>
+        <h2 style="border: none; padding: 0; margin: 5px 0 10px 0; font-size: 1.5rem;">
+          <a href="/provocations/">Provocations: AI & Creative Practice</a>
+        </h2>
+        <p style="font-size: 0.95rem; color: hsl(var(--text-muted)); margin-bottom: 20px;">
+          An interactive suite of slides and discussions examining the collision of machine learning with artistic creation. Explores ownership, prompt design, generative mediums, and the limits of agency.
+        </p>
+        <div style="margin-bottom: 20px;">
+          <span class="cyber-tag">Level: Seminar</span>
+          <span class="cyber-tag" style="background-color: hsla(var(--neon-pink), 0.1); color: hsl(var(--neon-pink)); border-color: hsla(var(--neon-pink), 0.2);">Format: Slides & Prompts</span>
+        </div>
+      </div>
+      <div>
+        <a href="/provocations/" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+          Open Slides Console
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Files Download Panel -->
+  <section class="cyber-card" style="margin-top: 40px;">
+    <h3 style="margin-top: 0; color: hsl(var(--neon-teal));">Downloadable Materials & PDF Documents</h3>
+    <p style="font-size: 0.95rem; color: hsl(var(--text-muted)); margin-bottom: 20px;">
+      Direct links to presentation decks, worksheets, and syllabus outlines used in previous classes.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid hsla(var(--neon-teal), 0.08); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <span style="font-family: var(--font-display); font-size: 0.95rem; color: hsl(var(--text-main));">Work With Me Portfolio Pitch Deck</span>
+          <br>
+          <span style="font-size: 0.8rem; color: hsl(var(--text-muted));">Meaghan White's design lab background and services outline</span>
+        </div>
+        <a href="/workwithme/" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.75rem;">
+          Open Presentation
+        </a>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 5px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <span style="font-family: var(--font-display); font-size: 0.95rem; color: hsl(var(--text-main));">Arduino Neopixel Code Sample (.INO)</span>
+          <br>
+          <span style="font-size: 0.8rem; color: hsl(var(--text-muted));">Standalone Arduino sketch file for Neopixel Ring exercises</span>
+        </div>
+        <a href="/workshops/arduino102/LEDsketch.ino" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.75rem;" download>
+          Download Sketch (.ino)
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,50 @@
+---
+layout: default
+title: "Field Notes"
+permalink: /blog/
+---
+<div style="max-width: 900px; margin: 0 auto;">
+  <header style="margin-bottom: 40px; text-align: center;">
+    <h1 style="border: none; padding-bottom: 0; margin-bottom: 10px; font-size: 3rem;">Field Notes</h1>
+    <p style="font-family: var(--font-display); color: hsl(var(--text-muted)); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+      Active Build logs, vulnerability reports, and project writeups
+    </p>
+  </header>
+
+  <section class="post-list">
+    {% for post in site.posts %}
+      <article class="post-card">
+        <div class="post-meta">
+          <span>{{ post.date | date: "%B %d, %Y" }}</span>
+          {% if post.category %}
+            <span style="color: hsl(var(--neon-pink));">•</span>
+            <span class="cyber-tag">{{ post.category }}</span>
+          {% endif %}
+          {% if post.status %}
+            <span style="color: hsl(var(--neon-pink));">•</span>
+            <span class="cyber-tag" style="background-color: hsla(var(--cyber-green), 0.1); color: hsl(var(--cyber-green)); border-color: hsla(var(--cyber-green), 0.2);">STATUS: {{ post.status }}</span>
+          {% endif %}
+        </div>
+        
+        <h2 class="post-title" style="border: none; padding: 0; margin: 5px 0 10px 0;">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        
+        <p class="post-excerpt" style="margin-bottom: 15px;">
+          {{ post.excerpt | strip_html | truncatewords: 35 }}
+        </p>
+        
+        <div>
+          <a href="{{ post.url }}" class="btn btn-primary" style="padding: 6px 15px; font-size: 0.75rem;">
+            Read Journal Log
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-left: 2px;">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    {% else %}
+      <p style="text-align: center; color: hsl(var(--text-muted)); font-style: italic;">No logs published yet. Stay tuned!</p>
+    {% endfor %}
+  </section>
+</div>

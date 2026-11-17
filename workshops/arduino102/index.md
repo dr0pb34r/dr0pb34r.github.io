@@ -2,6 +2,8 @@
 layout: workshop
 title: "Arduino with Neopixel Ring Workshop"
 permalink: /workshops/arduino102/
+difficulty: "Intermediate"
+duration: "2 Hours"
 ---
 
 ## Introduction and Setup
