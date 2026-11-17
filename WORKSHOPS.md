@@ -77,9 +77,15 @@ courses show both start and end dates. for `open`, add a real https `booking_url
 `booking_type` is `tickets` or `registration`. the booking provider handles
 payments and capacity; update the status manually when a session fills.
 
-keep unconfirmed details blank. none of the current offerings has dates, prices,
-venues, or booking links. expired sessions return to waitlist wording. no claim
-that cohorts are filled is shown unless the offering is marked `sold_out`.
+keep unconfirmed next-cohort details blank. the next cohorts currently have no
+confirmed dates, prices, venues, or booking links. expired sessions return to
+the catalogue waitlist notice.
+
+the catalogue's current notice is `sessions filled - waitlist open`, reflecting
+meg's confirmation that existing sessions are filled and next-cohort waitlists
+are open. edit `waitlist_notice` in `_data/workshops.json` to change it. adding
+a future session with `status: open` replaces this notice with `bookings open`
+and shows its booking link. keep this notice aligned with actual availability.
 
 ## verification and publishing
 

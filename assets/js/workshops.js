@@ -8,7 +8,7 @@ document.querySelectorAll('[data-session-end]').forEach((panel) => {
 });
 document.querySelectorAll('[data-catalogue-session-end]').forEach((label) => {
   const end = Date.parse(label.dataset.catalogueSessionEnd);
-  if (Number.isFinite(end) && end <= Date.now()) label.textContent = 'waitlist open';
+  if (Number.isFinite(end) && end <= Date.now()) label.textContent = label.dataset.waitlistNotice || 'waitlist open';
 });
 
 // Kit loads its forms asynchronously. Keep preference choices optional and

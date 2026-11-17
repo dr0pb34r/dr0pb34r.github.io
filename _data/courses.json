@@ -108,58 +108,8 @@
     "type": "workshop"
   },
   {
-    "id": "provocations",
-    "number": "03",
-    "title": "provocations",
-    "subtitle": "an intensive 8-week studio for artists in a world of ai.",
-    "path": "/provocations/",
-    "category": "artists’ studio // 8-week intensive",
-    "accent": "pink",
-    "summary": "an intensive 8-week course and studio for artists. work through weekly provocations, make and question your own work, and develop a creative practice with ai as a material. sceptics welcome.",
-    "introduction": "an intensive 8-week studio for artists who want to understand the tools, test their limits, and decide what belongs in their practice. start with the mechanics, develop work through weekly provocations and shared critique, and make your own case for what is worth exhibiting — or refusing.",
-    "audience": "practising and emerging artists, designers, and creative people who want room to experiment and think critically.",
-    "format": "intensive 8-week course // studio for artists",
-    "experience": "no ai experience required",
-    "bring": "your own creative questions and material to work with. equipment and account requirements will be confirmed with each session.",
-    "outcomes": [
-      "understand the mechanics behind generative tools and how they shape the work.",
-      "build a personal reference library and explore how different platforms respond.",
-      "make your choices, labour, and creative intent visible through a process journal.",
-      "develop your own position on authorship, mimicry, and when to refuse a tool."
-    ],
-    "outline": [
-      {
-        "title": "week 1 // material, not magic",
-        "text": "a technical deep-dive into training data, models, prompts, and reference libraries. open up the mechanics and the ethical questions that will shape your studio practice."
-      },
-      {
-        "title": "weeks 2–7 // guided studio",
-        "text": "respond to weekly provocations: the glossiest slop on earth, mimesis, make the effort legible, aura & context, edges & refusals, and indefense of ai. make work, share your process, and develop it through critical conversation."
-      },
-      {
-        "title": "week 8 // ai art sucks",
-        "text": "bring your work and your position to a final collective critique. decide what deserves to be exhibited, what needs more work, and what you would rather leave unmade."
-      }
-    ],
-    "waitlist_form_url": "https://dropbear-labs.kit.com/16c07d212a",
-    "session": {
-      "status": "upcoming",
-      "starts_at": "",
-      "ends_at": "",
-      "location": "",
-      "price": "",
-      "booking_url": "",
-      "booking_type": "tickets"
-    },
-    "waitlist_embed_url": "https://dropbear-labs.kit.com/16c07d212a/index.js",
-    "waitlist_form_uid": "16c07d212a",
-    "kit_form_id": "10200846",
-    "idea_heading": "eight weeks for your own practice.",
-    "type": "course"
-  },
-  {
     "id": "agent-overlord",
-    "number": "04",
+    "number": "03",
     "title": "agent overlord",
     "subtitle": "build agentic systems for the way you live and work.",
     "path": "/courses/agent-overlord/",
@@ -209,6 +159,56 @@
       "booking_url": "",
       "booking_type": "tickets"
     },
+    "type": "course"
+  },
+  {
+    "id": "provocations",
+    "number": "04",
+    "title": "provocations",
+    "subtitle": "an intensive 8-week studio for artists in a world of ai.",
+    "path": "/provocations/",
+    "category": "artists’ studio // 8-week intensive",
+    "accent": "pink",
+    "summary": "an intensive 8-week course and studio for artists. work through weekly provocations, make and question your own work, and develop a creative practice with ai as a material. sceptics welcome.",
+    "introduction": "an intensive 8-week studio for artists who want to understand the tools, test their limits, and decide what belongs in their practice. start with the mechanics, develop work through weekly provocations and shared critique, and make your own case for what is worth exhibiting — or refusing.",
+    "audience": "practising and emerging artists, designers, and creative people who want room to experiment and think critically.",
+    "format": "intensive 8-week course // studio for artists",
+    "experience": "no ai experience required",
+    "bring": "your own creative questions and material to work with. equipment and account requirements will be confirmed with each session.",
+    "outcomes": [
+      "understand the mechanics behind generative tools and how they shape the work.",
+      "build a personal reference library and explore how different platforms respond.",
+      "make your choices, labour, and creative intent visible through a process journal.",
+      "develop your own position on authorship, mimicry, and when to refuse a tool."
+    ],
+    "outline": [
+      {
+        "title": "week 1 // material, not magic",
+        "text": "a technical deep-dive into training data, models, prompts, and reference libraries. open up the mechanics and the ethical questions that will shape your studio practice."
+      },
+      {
+        "title": "weeks 2–7 // guided studio",
+        "text": "respond to weekly provocations: the glossiest slop on earth, mimesis, make the effort legible, aura & context, edges & refusals, and indefense of ai. make work, share your process, and develop it through critical conversation."
+      },
+      {
+        "title": "week 8 // ai art sucks",
+        "text": "bring your work and your position to a final collective critique. decide what deserves to be exhibited, what needs more work, and what you would rather leave unmade."
+      }
+    ],
+    "waitlist_form_url": "https://dropbear-labs.kit.com/16c07d212a",
+    "session": {
+      "status": "upcoming",
+      "starts_at": "",
+      "ends_at": "",
+      "location": "",
+      "price": "",
+      "booking_url": "",
+      "booking_type": "tickets"
+    },
+    "waitlist_embed_url": "https://dropbear-labs.kit.com/16c07d212a/index.js",
+    "waitlist_form_uid": "16c07d212a",
+    "kit_form_id": "10200846",
+    "idea_heading": "eight weeks for your own practice.",
     "type": "course"
   }
 ]

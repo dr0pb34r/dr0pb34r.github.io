@@ -9,8 +9,8 @@
   <div class="course-row-action">
     {% assign current_time = site.time | date: '%s' | plus: 0 %}{% assign end_time = include.course.session.ends_at | date: '%s' | plus: 0 %}
     {% if include.course.session.ends_at != '' and end_time > current_time and include.course.session.status != 'upcoming' %}
-    <span class="course-status" data-catalogue-session-end="{{ include.course.session.ends_at | escape }}">{% if include.course.session.status == 'open' %}bookings open{% elsif include.course.session.status == 'sold_out' %}session full · waitlist open{% else %}session announced{% endif %}</span>
-    {% else %}<span class="course-status">waitlist open</span>{% endif %}
+    <span class="course-status" data-catalogue-session-end="{{ include.course.session.ends_at | escape }}" data-waitlist-notice="{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}">{% if include.course.session.status == 'open' %}bookings open{% elsif include.course.session.status == 'sold_out' %}{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}{% else %}session announced{% endif %}</span>
+    {% else %}<span class="course-status">{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}</span>{% endif %}
     <a class="workshop-button button-outline" href="{{ include.course.path | relative_url }}">explore the {{ include.course.type }} <span aria-hidden="true">↗</span></a>
   </div>
 </article>

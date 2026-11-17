@@ -7,20 +7,19 @@ workshop_styles: true
 ---
 <section class="hero workshops-hero">
   <div class="hero-copy">
-    <p class="eyebrow">dropbear labs // workshops and courses</p>
-    <h1>listen<br>watch<br><span>do.</span></h1>
-    <p class="lede">creative experiments, critical questions, and useful things you can build yourself. get to know ai by getting your hands into it.</p>
-    <div class="workshop-actions"><a class="workshop-button" href="#offerings">find your next thing <span aria-hidden="true">↓</span></a><a class="text-link" href="{{ '/updates/' | relative_url }}">send me postcards →</a></div>
+    <p class="eyebrow">workshops &amp;&amp; courses</p>
+    <h1>add <span>//</span> drop.</h1>
+    <p class="lede">back to school. join me for creative experiments, difficult questions and supercharged personal projects.</p>
+    <div class="workshop-actions"><a class="text-link" href="#offerings">pick your class <span aria-hidden="true">↓</span></a></div>
   </div>
   <figure class="hero-mark">
     <img src="{{ '/wtf.png' | relative_url }}" alt="dropbear labs: a drop bear at a computer">
-    <figcaption>curiosity encouraged // sceptics welcome</figcaption>
   </figure>
 </section>
 <section class="course-catalogue" id="offerings">
-  <header class="catalogue-header"><div><p class="eyebrow">current offerings</p><h2>what do you<br>want to make?</h2></div><p>a day to explore something new, or a bigger investment in your practice. join a waitlist even when the next date isn’t booked.</p></header>
+  <p class="eyebrow">current offerings</p>
   <section class="offering-group" id="workshops" aria-labelledby="workshops-heading">
-    <header class="offering-group-header"><h2 id="workshops-heading">workshops</h2><p>short, one-day things. come curious, make something, take it with you.</p></header>
+    <header class="offering-group-header"><h2 id="workshops-heading">workshops</h2><p>short, one-day things. come curious (or skeptical!), make something, take it with you.</p></header>
     {% assign workshops = site.data.courses | where: 'type', 'workshop' %}{% for course in workshops %}{% include offering-card.html course=course %}{% endfor %}
   </section>
   <section class="offering-group" id="courses" aria-labelledby="courses-heading">
