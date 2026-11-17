@@ -1,0 +1,134 @@
+/* Extends the existing Dropbear Labs palette and typography. */
+.workshops-hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(16rem, .7fr); gap: 4rem; align-items: center; padding: 6rem 0 4.5rem; }
+.workshops-hero h1 { max-width: 14ch; font-size: clamp(2.7rem, 6.4vw, 5.8rem); }
+.workshops-hero h1 span { color: var(--cyan); }
+.workshops-hero .lede { max-width: 45ch; font-size: 1rem; }
+.workshop-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.workshop-button { display: inline-flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 3.1rem; padding: .8rem 1.1rem; background: var(--cyan); color: var(--bg-deep); border: 1px solid var(--cyan); font: inherit; font-size: .76rem; font-weight: 600; line-height: 1.4; text-decoration: none; cursor: pointer; }
+.workshop-button:hover { background: var(--fg); border-color: var(--fg); color: var(--bg-deep); }
+.button-outline { color: var(--cyan); background: transparent; border-color: var(--line); }
+.button-outline:hover { color: var(--cyan); background: var(--panel); border-color: var(--cyan); }
+.workshop-mark { margin: 0; align-self: center; }
+.workshop-mark img { width: 100%; height: auto; display: block; mix-blend-mode: screen; }
+.workshop-mark figcaption { margin: 1rem 0 0; text-align: center; color: var(--soft); font-size: .6rem; }
+.workshop-intro-strip { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.25rem 0; border-block: 1px solid var(--line); font-size: .75rem; }
+.workshop-intro-strip p { margin: 0; color: var(--soft); }
+.course-catalogue { padding: 6rem 0; scroll-margin-top: 6rem; }
+.catalogue-header { display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 4rem; margin-bottom: 3rem; }
+.catalogue-header h2 { font-size: clamp(2rem, 4.5vw, 4rem); }
+.catalogue-header > p { color: var(--soft); font-size: .85rem; max-width: 40ch; margin: 0; }
+.course-row { --course-accent: var(--cyan); display: grid; grid-template-columns: 3rem minmax(0, 1fr) 14rem; gap: 2rem; padding: 2.6rem 0; border-top: 1px solid var(--line); }
+.accent-pink { --course-accent: var(--pink-soft); }
+.course-number { color: var(--course-accent); font-size: .8rem; padding-top: .15rem; }
+.course-row .eyebrow { color: var(--course-accent); font-size: .6rem; }
+.course-row h3 { max-width: 28ch; font-size: clamp(1.4rem, 2.5vw, 2.1rem); }
+.course-row h3 a { text-decoration: none; }
+.course-row-copy > p:not(.eyebrow) { max-width: 63ch; color: var(--soft); font-size: .82rem; margin: 1.25rem 0; }
+.course-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+.course-tags span { padding: .3rem .6rem; border: 1px solid var(--line); color: var(--soft); font-size: .58rem; }
+.course-row-action { display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 1.25rem; }
+.course-status { color: var(--soft); font-size: .65rem; }
+.course-status::before { content: ''; display: inline-block; width: .4rem; height: .4rem; margin-right: .5rem; border-radius: 50%; background: var(--course-accent); }
+.wire-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; border: 1px solid var(--line); border-left: 3px solid var(--pink); background: var(--panel); padding: clamp(1.5rem, 4vw, 3.5rem); }
+.wire-banner h2 { font-size: clamp(2.2rem, 4.5vw, 4rem); }
+.wire-banner > div > p:not(.eyebrow, .small-print) { color: var(--soft); font-size: .9rem; margin: 0 0 1.75rem; }
+.small-print { color: var(--soft); font-size: .65rem; line-height: 1.8; }
+.small-print a { color: var(--cyan); overflow-wrap: anywhere; }
+.workshop-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding: 6rem 0 4rem; }
+.workshop-bottom-grid h2 { font-size: 2rem; }
+.workshop-bottom-grid p { color: var(--soft); font-size: .82rem; }
+.workshop-faq details { border-top: 1px solid var(--line); }
+.workshop-faq details:last-child { border-bottom: 1px solid var(--line); }
+.workshop-faq summary { padding: 1.15rem 0; font-size: .8rem; cursor: pointer; }
+.workshop-faq details p { margin: 0 0 1.5rem; }
+.resource-link { padding: 1.5rem 0 3rem; display: flex; flex-wrap: wrap; gap: 1rem; color: var(--soft); font-size: .7rem; }
+.course-header { padding: 4rem 0; border-bottom: 1px solid var(--line); }
+.breadcrumb { display: inline-block; margin-bottom: 3rem; }
+.course-header h1 { max-width: 22ch; font-size: clamp(2.2rem, 5.4vw, 5rem); overflow-wrap: anywhere; }
+.course-header .lede { max-width: 47ch; }
+.course-columns { display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 4rem; padding: 4rem 0; align-items: start; }
+.course-section { margin-bottom: 3.5rem; }
+.course-section h2, .other-courses h2 { font-size: clamp(1.5rem, 2.8vw, 2.3rem); letter-spacing: -.04em; }
+.course-section p, .course-section li { font-size: .85rem; color: var(--soft); }
+.course-section p a { color: var(--cyan); }
+.course-facts { margin-top: 2rem; }
+.course-facts > div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; border-top: 1px solid var(--line); padding: 1rem 0; font-size: .73rem; }
+.course-facts dt { color: var(--cyan); }
+.course-facts dd { margin: 0; color: var(--soft); }
+.outcomes { list-style: none; padding: 0; margin-top: 1.75rem; }
+.outcomes li { position: relative; padding: .8rem 0 .8rem 1.75rem; border-bottom: 1px solid var(--line); }
+.outcomes li::before { content: '↗'; color: var(--cyan); position: absolute; left: 0; }
+.course-outline { margin-top: 2rem; padding-left: 1.6rem; }
+.course-outline li { padding-left: .7rem; margin-bottom: 1.75rem; }
+.course-outline li::marker { color: var(--pink-soft); }
+.course-outline h3 { font-size: 1.05rem; color: var(--fg); line-height: 1.4; letter-spacing: -.03em; }
+.course-outline p { margin: .5rem 0 0; }
+.course-sidebar { position: sticky; top: 6rem; }
+.session-panel { padding: 1.75rem; border: 1px solid var(--line); border-top: 3px solid var(--course-accent, var(--cyan)); background: var(--panel); scroll-margin-top: 6rem; }
+.session-panel .session-title { font-size: 1.6rem; line-height: 1.2; letter-spacing: -.04em; }
+.session-panel p:not(.eyebrow, .small-print) { color: var(--soft); font-size: .8rem; }
+.session-panel .workshop-button { width: 100%; margin-top: .75rem; }
+.session-panel > .text-link { display: inline-block; margin-top: .75rem; font-size: .68rem; }
+.course-waitlist { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.5rem; }
+.course-waitlist h3 { font-size: 1.1rem; line-height: 1.4; letter-spacing: -.03em; }
+.course-waitlist .formkit-form { max-width: 100%; }
+.session-facts > div { border-bottom: 1px solid var(--line); padding: .7rem 0; font-size: .75rem; }
+.session-facts dt { color: var(--cyan); margin-bottom: .3rem; }
+.session-facts dd { margin: 0; }
+.facilitator-note { margin-top: 2rem; padding: 0 1.75rem; }
+.facilitator-note h3 { font-size: 1.3rem; }
+.facilitator-note p:not(.eyebrow) { color: var(--soft); font-size: .75rem; }
+.other-courses { padding: 1rem 0 5rem; }
+.related-courses { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.related-courses > a { display: flex; flex-direction: column; gap: 1rem; padding: 2rem 2rem 2rem 0; text-decoration: none; }
+.related-courses span { font-size: .65rem; color: var(--cyan); }
+.related-courses strong { font-size: 1.15rem; font-weight: 500; }
+.signup-page { padding: 5rem 0 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.signup-page h1 { font-size: clamp(3rem, 6vw, 5.5rem); }
+.signup-page .lede { font-size: 1rem; }
+.signup-form { padding: 2rem; background: var(--panel); border: 1px solid var(--line); align-self: start; }
+.signup-form h2 { font-size: 1.5rem; margin-bottom: 1.75rem; }
+.signup-form > p { color: var(--soft); font-size: .85rem; }
+.signup-form > p.small-print { font-size: .65rem; }
+.signup-form .formkit-form { max-width: 100%; }
+.signup-form .workshop-button { width: 100%; margin-top: 1.25rem; }
+.signup-benefits { padding-left: 1.2rem; color: var(--soft); font-size: .85rem; }
+.signup-benefits li { padding: .5rem 0; }
+.signup-alternative { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .75rem; color: var(--soft); }
+.signup-alternative a { color: var(--cyan); }
+.topbar nav a[aria-current] { color: var(--cyan); }
+[hidden] { display: none !important; }
+:is(a, button, input, summary):focus-visible { outline: 2px solid var(--pink-soft); outline-offset: 5px; }
+@media (max-width: 1000px) {
+  .workshops-hero { gap: 2rem; }
+  .course-row { grid-template-columns: 2rem minmax(0, 1fr); gap: 1.25rem; }
+  .course-row-action { grid-column: 2; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .course-columns { grid-template-columns: minmax(0, 1fr) 20rem; gap: 2rem; }
+  .signup-page { gap: 2rem; }
+}
+@media (max-width: 760px) {
+  .topbar { gap: 1rem; padding-inline: 1rem; }
+  .topbar nav { gap: .5rem .8rem; }
+  .workshops-hero { grid-template-columns: 1fr; padding: 3.5rem 0 2.5rem; }
+  .workshops-hero h1 { font-size: clamp(2.4rem, 10vw, 4.2rem); }
+  .workshop-mark { width: min(70%, 15rem); justify-self: center; }
+  .workshop-actions { gap: 1.25rem; }
+  .workshop-intro-strip { display: block; }
+  .workshop-intro-strip p { margin-bottom: .5rem; }
+  .catalogue-header, .wire-banner, .workshop-bottom-grid, .signup-page { grid-template-columns: 1fr; gap: 2rem; }
+  .course-catalogue { padding: 4rem 0; }
+  .catalogue-header { align-items: start; }
+  .course-row { padding: 2rem 0; }
+  .course-row-action { align-items: start; flex-direction: column; gap: 1rem; }
+  .course-row h3 { font-size: 1.45rem; }
+  .workshop-bottom-grid { padding-top: 4rem; }
+  .course-header { padding: 3rem 0; }
+  .course-columns { grid-template-columns: 1fr; padding-top: 2rem; }
+  .course-sidebar { position: static; grid-row: 1; }
+  .session-panel { scroll-margin-top: 8rem; }
+  .course-facts > div { grid-template-columns: 1fr; gap: .4rem; }
+  .related-courses { grid-template-columns: 1fr; }
+  .related-courses > a { border-bottom: 1px solid var(--line); }
+  .signup-page { padding-top: 3rem; }
+  .signup-form { padding: 1rem; min-width: 0; }
+}

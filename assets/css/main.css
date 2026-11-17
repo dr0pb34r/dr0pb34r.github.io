@@ -383,6 +383,11 @@ h3 { font-size: clamp(1.25rem, 2.3vw, 2rem); }
   font-size: .65rem;
 }
 
+.home-workshop-invite { padding: 3.5rem 0; border-bottom: 1px solid var(--line); }
+.home-workshop-invite h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); }
+.home-workshop-invite > p:not(.eyebrow) { color: var(--soft); font-size: .85rem; }
+.home-workshop-invite .text-link { display: inline-block; margin: .75rem 1.5rem 0 0; }
+
 @media (max-width: 760px) {
   .topbar { align-items: flex-start; }
   .topbar nav { flex-wrap: wrap; justify-content: flex-end; gap: .5rem 1rem; }

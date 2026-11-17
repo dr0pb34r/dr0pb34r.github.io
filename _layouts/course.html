@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{% assign course = site.data.courses | where: 'id', page.course_id | first %}
+<article class="course-page accent-{{ course.accent }}">
+  <header class="course-header">
+    <a class="text-link breadcrumb" href="{{ '/workshops/' | relative_url }}">← all workshops</a>
+    <p class="eyebrow">{{ course.number }} // {{ course.category }}</p>
+    <h1>{{ course.title | escape }}</h1>
+    <p class="lede">{{ course.subtitle | escape }}</p>
+    <a class="workshop-button" href="#next-session">Find the next one <span aria-hidden="true">↓</span></a>
+  </header>
+  <div class="course-columns">
+    <div class="course-content">
+      <section class="course-section">
+        <p class="eyebrow">the idea</p>
+        <h2>Make room for your own practice.</h2>
+        <p>{{ course.introduction | escape }}</p>
+        <dl class="course-facts">
+          <div><dt>for</dt><dd>{{ course.audience | escape }}</dd></div>
+          <div><dt>format</dt><dd>{{ course.format | escape }}</dd></div>
+          <div><dt>starting point</dt><dd>{{ course.experience | escape }}</dd></div>
+        </dl>
+      </section>
+      <section class="course-section">
+        <p class="eyebrow">what you’ll take away</p>
+        <h2>More than a list of prompts.</h2>
+        <ul class="outcomes">{% for outcome in course.outcomes %}<li>{{ outcome | escape }}</li>{% endfor %}</ul>
+      </section>
+      <section class="course-section">
+        <p class="eyebrow">inside the workshop</p>
+        <h2>The shape of things.</h2>
+        <ol class="course-outline">
+          {% for part in course.outline %}
+          <li><h3>{{ part.title | escape }}</h3><p>{{ part.text | escape }}</p></li>
+          {% endfor %}
+        </ol>
+        <p class="small-print">This is the course direction. The session listing will confirm the final format and schedule.</p>
+      </section>
+      <section class="course-section">
+        <p class="eyebrow">before you arrive</p>
+        <h2>Bring your curiosity.</h2>
+        <p>{{ course.bring | escape }}</p>
+        <p>Questions about access or whether this is the right workshop for you? <a href="mailto:{{ site.data.workshops.contact_email }}">Email Meg</a> before booking.</p>
+      </section>
+    </div>
+    <aside class="course-sidebar" aria-label="Dates, bookings and waitlist">
+      {% include course-session.html course=course %}
+      <div class="facilitator-note"><p class="eyebrow">your facilitator</p><h3>Meg White</h3><p>Creative technologist, educator, and the person behind Dropbear Labs.</p><a class="text-link" href="https://megwhite.com.au">Meet Meg ↗</a></div>
+    </aside>
+  </div>
+  <section class="other-courses">
+    <p class="eyebrow">another way in</p>
+    <h2>Keep exploring.</h2>
+    <div class="related-courses">{% for other in site.data.courses %}{% if other.id != course.id %}<a href="{{ other.path | relative_url }}"><span>{{ other.category }}</span><strong>{{ other.title | escape }}</strong><span class="text-link">Explore the course →</span></a>{% endif %}{% endfor %}</div>
+  </section>
+</article>
