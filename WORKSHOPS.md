@@ -44,6 +44,11 @@ Verify with your own email that signup reaches the intended audience, the
 confirmation arrives, the sender is correct, and unsubscribe works. Account
 creation, ownership verification, and sender verification require the owner.
 
+The production lab-updates signup was tested on 17 November 2026 with Meg's
+permission. Meg confirmed receipt of the confirmation email and clicked its
+confirmation link. No broadcast was sent. Creator Network Recommendations
+were turned off to keep the signup flow focused on Dropbear Labs.
+
 Course waitlists are embedded in each course's booking panel. The provider
 form handles the submission and confirmation, with a hosted-form fallback.
 No locally simulated success state is used. Joining a waitlist does not reserve
@@ -92,8 +97,9 @@ bundle exec jekyll build --destination /tmp/dropbear-site
 
 Check `/workshops/`, the three course pages, `/updates/`, `/mail.html`, and
 `/privacy/` on desktop and mobile. Complete one real opt-in yourself before
-sharing the signup link. No test subscription or outbound email was sent by
-the development agent unless separately authorized by Meg.
+sharing a changed signup link. The only test subscription submitted by the
+development agent was the production lab-updates test explicitly authorized
+by Meg; no other recipients were contacted.
 
 The Provocations grant/application material informed the course copy only.
 Historic dates, grant-dependent access commitments, proposed venues, and

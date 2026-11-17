@@ -72,6 +72,7 @@
 .course-waitlist { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.5rem; }
 .course-waitlist h3 { font-size: 1.1rem; line-height: 1.4; letter-spacing: -.03em; }
 .course-waitlist .formkit-form { max-width: 100%; }
+.formkit-form .formkit-powered-by-convertkit[data-variant="dark"] { filter: invert(1) grayscale(1) !important; opacity: .8 !important; }
 .session-facts > div { border-bottom: 1px solid var(--line); padding: .7rem 0; font-size: .75rem; }
 .session-facts dt { color: var(--cyan); margin-bottom: .3rem; }
 .session-facts dd { margin: 0; }
