@@ -1,0 +1,24 @@
+{% assign provider_events = site.data.bookings.events | where: 'offering_id', include.course.id | sort: 'starts_at' %}
+{% for booking in provider_events %}
+  {% assign booking_end = booking.ends_at | date: '%s' | plus: 0 %}
+  {% assign sale_end = booking.sales_end_at | date: '%s' | plus: 0 %}
+  {% if booking_end > include.current_time %}
+  {% unless booking.sales_end_at != '' and sale_end <= include.current_time %}
+  <section class="provider-session" data-provider-event-end="{{ booking.ends_at | escape }}" {% if booking.sales_end_at != '' %}data-provider-sales-end="{{ booking.sales_end_at | escape }}"{% endif %}>
+    <h2 class="session-title">{% if booking.status == 'open' %}{% if include.course.type == 'course' %}book the next cohort.{% else %}book the next workshop.{% endif %}{% elsif booking.status == 'sold_out' %}sessions filled - waitlist open{% else %}next session announced.{% endif %}</h2>
+    <dl class="session-facts">
+      {% assign start_day = booking.starts_at | date: '%F' %}{% assign end_day = booking.ends_at | date: '%F' %}
+      <div><dt>when</dt><dd><time datetime="{{ booking.starts_at | escape }}">{{ booking.starts_at | date: '%-d %B %Y, %-I:%M %p' | downcase }}</time> – {% if start_day != end_day %}{{ booking.ends_at | date: '%-d %B %Y, %-I:%M %p' | downcase }}{% else %}{{ booking.ends_at | date: '%-I:%M %p' | downcase }}{% endif %} aest (brisbane)</dd></div>
+      <div><dt>where</dt><dd>{{ booking.location | escape }}</dd></div>
+      <div><dt>price</dt><dd>{{ booking.price | escape }}</dd></div>
+    </dl>
+    {% if include.course.type == 'course' %}<p class="small-print">one booking covers the full cohort. check every meeting date on the booking page.</p>{% endif %}
+    {% if booking.status == 'open' and booking.booking_url != '' %}
+      <a class="workshop-button" href="{{ booking.booking_url | escape }}" data-booking-link>{% if booking.booking_type == 'registration' %}register for this session{% else %}book tickets{% endif %} <span aria-hidden="true">↗</span></a>
+      <p class="small-print">ticket tailor handles availability and checkout. check the full price, session details and cancellation terms there before booking.</p>
+    {% elsif booking.status == 'sold_out' %}<p>join the waitlist below for the next one.</p>
+    {% else %}<p>bookings have not opened yet. join the waitlist below to hear when places open.</p>{% endif %}
+  </section>
+  {% endunless %}
+  {% endif %}
+{% endfor %}

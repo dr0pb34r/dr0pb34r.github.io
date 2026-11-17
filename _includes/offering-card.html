@@ -7,9 +7,19 @@
     <div class="course-tags"><span>{{ include.course.format | escape }}</span><span>{{ include.course.experience | escape }}</span></div>
   </div>
   <div class="course-row-action">
-    {% assign current_time = site.time | date: '%s' | plus: 0 %}{% assign end_time = include.course.session.ends_at | date: '%s' | plus: 0 %}
-    {% if include.course.session.ends_at != '' and end_time > current_time and include.course.session.status != 'upcoming' %}
-    <span class="course-status" data-catalogue-session-end="{{ include.course.session.ends_at | escape }}" data-waitlist-notice="{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}">{% if include.course.session.status == 'open' %}bookings open{% elsif include.course.session.status == 'sold_out' %}{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}{% else %}session announced{% endif %}</span>
+    {% assign current_time = site.time | date: '%s' | plus: 0 %}
+    {% assign catalogue_session = include.course.session %}{% assign imported_session = false %}
+    {% assign provider_events = site.data.bookings.events | where: 'offering_id', include.course.id | sort: 'starts_at' %}
+    {% for booking in provider_events %}
+      {% assign booking_end = booking.ends_at | date: '%s' | plus: 0 %}{% assign sale_end = booking.sales_end_at | date: '%s' | plus: 0 %}
+      {% if booking_end > current_time %}{% unless booking.sales_end_at != '' and sale_end <= current_time %}
+        {% unless imported_session %}{% assign catalogue_session = booking %}{% assign imported_session = true %}{% endunless %}
+        {% if booking.status == 'open' %}{% assign catalogue_session = booking %}{% assign imported_session = true %}{% break %}{% endif %}
+      {% endunless %}{% endif %}
+    {% endfor %}
+    {% assign end_time = catalogue_session.ends_at | date: '%s' | plus: 0 %}
+    {% if catalogue_session.ends_at != '' and end_time > current_time and catalogue_session.status != 'upcoming' %}
+    <span class="course-status" data-catalogue-session-end="{{ catalogue_session.ends_at | escape }}" {% if imported_session and catalogue_session.sales_end_at != '' %}data-catalogue-sales-end="{{ catalogue_session.sales_end_at | escape }}"{% endif %} data-waitlist-notice="{% if imported_session %}waitlist open{% else %}{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}{% endif %}">{% if catalogue_session.status == 'open' %}bookings open{% elsif catalogue_session.status == 'sold_out' %}{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}{% else %}session announced{% endif %}</span>
     {% else %}<span class="course-status">{{ site.data.workshops.waitlist_notice | default: 'waitlist open' | escape }}</span>{% endif %}
     <a class="workshop-button button-outline" href="{{ include.course.path | relative_url }}">explore the {{ include.course.type }} <span aria-hidden="true">↗</span></a>
   </div>

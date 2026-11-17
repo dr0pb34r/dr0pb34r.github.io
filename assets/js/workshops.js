@@ -8,7 +8,20 @@ document.querySelectorAll('[data-session-end]').forEach((panel) => {
 });
 document.querySelectorAll('[data-catalogue-session-end]').forEach((label) => {
   const end = Date.parse(label.dataset.catalogueSessionEnd);
-  if (Number.isFinite(end) && end <= Date.now()) label.textContent = label.dataset.waitlistNotice || 'waitlist open';
+  const saleEnd = Date.parse(label.dataset.catalogueSalesEnd);
+  if ((Number.isFinite(end) && end <= Date.now()) || (Number.isFinite(saleEnd) && saleEnd <= Date.now())) label.textContent = label.dataset.waitlistNotice || 'waitlist open';
+});
+
+document.querySelectorAll('[data-provider-sessions]').forEach((sessions) => {
+  sessions.querySelectorAll('[data-provider-event-end]').forEach((event) => {
+    const end = Date.parse(event.dataset.providerEventEnd);
+    const saleEnd = Date.parse(event.dataset.providerSalesEnd);
+    if ((Number.isFinite(end) && end <= Date.now()) || (Number.isFinite(saleEnd) && saleEnd <= Date.now())) event.hidden = true;
+  });
+  if (!sessions.querySelector('[data-provider-event-end]:not([hidden])')) {
+    sessions.hidden = true;
+    sessions.parentElement.querySelector('[data-provider-finished]').hidden = false;
+  }
 });
 
 // Kit loads its forms asynchronously. Keep preference choices optional and

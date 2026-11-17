@@ -81,6 +81,7 @@
 .session-facts > div { border-bottom: 1px solid var(--line); padding: .7rem 0; font-size: .75rem; }
 .session-facts dt { color: var(--cyan); margin-bottom: .3rem; }
 .session-facts dd { margin: 0; }
+.provider-session + .provider-session { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 2rem; }
 .facilitator-note { margin-top: 2rem; padding: 0 1.75rem; }
 .facilitator-photo { display: block; width: 100%; max-width: 12rem; height: auto; margin-bottom: 1.5rem; border: 1px solid var(--line); }
 .facilitator-note h3 { font-size: 1.3rem; }

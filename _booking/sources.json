@@ -1,0 +1,45 @@
+{
+  "enabled": false,
+  "offerings": [
+    {
+      "offering_id": "build-almost-anything",
+      "event_names": [
+        "how to build (almost) anything with a magic computer"
+      ],
+      "event_ids": [],
+      "event_series_ids": [
+        "es_2536692"
+      ]
+    },
+    {
+      "offering_id": "creative-ai",
+      "event_names": [
+        "creative ai: material, not magic"
+      ],
+      "event_ids": [],
+      "event_series_ids": [
+        "es_2536693"
+      ]
+    },
+    {
+      "offering_id": "agent-overlord",
+      "event_names": [
+        "agent overlord"
+      ],
+      "event_ids": [],
+      "event_series_ids": [
+        "es_2536694"
+      ]
+    },
+    {
+      "offering_id": "provocations",
+      "event_names": [
+        "provocations"
+      ],
+      "event_ids": [],
+      "event_series_ids": [
+        "es_2536695"
+      ]
+    }
+  ]
+}

@@ -64,6 +64,12 @@ or process payment.
 
 ## sessions and bookings
 
+ticket tailor + stripe is the selected booking provider. the integration is
+prepared but disabled until a read-only API key is connected and a real event is
+verified. the account and four undated draft listings are ready; stripe is deferred. see `_booking/README.md` for account setup, reusable event names,
+the event-only sync and the prepared deployment workflow. no paid checkout
+is live yet. the current waitlists continue to work.
+
 edit the offering's `session` in `_data/courses.json`:
 
 - `upcoming`: waitlist open; no dates or availability claims

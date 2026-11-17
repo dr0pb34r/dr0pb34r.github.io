@@ -1,0 +1,59 @@
+# Prepared workflow; inactive while it stays under _booking/.
+# After account verification, install as .github/workflows/pages.yml and
+# set Settings > Pages > Source to GitHub Actions. See _booking/README.md.
+name: publish dropbear labs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dropbear-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.event_name != 'schedule' || vars.BOOKING_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: test booking adapter
+        run: node --test scripts/sync_bookings.test.mjs
+      - name: sync public booking events
+        env:
+          TICKET_TAILOR_API_KEY: ${{ secrets.TICKET_TAILOR_API_KEY }}
+        run: node scripts/sync_bookings.mjs
+      - name: configure pages
+        uses: actions/configure-pages@v5
+      - name: build jekyll site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: upload built website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: publish website
+        id: deployment
+        uses: actions/deploy-pages@v4

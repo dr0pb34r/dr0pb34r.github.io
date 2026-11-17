@@ -1,10 +1,16 @@
 {% assign session = include.course.session %}
 {% assign current_time = site.time | date: '%s' | plus: 0 %}
+{% capture provider_markup %}{% include provider-sessions.html course=include.course current_time=current_time %}{% endcapture %}
+{% assign provider_markup = provider_markup | strip %}
 {% assign end_time = session.ends_at | date: '%s' | plus: 0 %}
 {% assign session_future = false %}
 {% if session.ends_at != '' and end_time > current_time %}{% assign session_future = true %}{% endif %}
-<div class="session-panel" id="next-session" {% if session_future %}data-session-end="{{ session.ends_at | escape }}"{% endif %}>
+<div class="session-panel" id="next-session" {% if session_future and provider_markup == '' %}data-session-end="{{ session.ends_at | escape }}"{% endif %}>
   <p class="eyebrow">the next one</p>
+  {% if provider_markup != '' %}
+  <div data-provider-sessions>{{ provider_markup }}</div>
+  <div data-provider-finished hidden><h2 class="session-title">join the waitlist for the next one.</h2><p>bookings for the listed sessions have closed. hear when new places open.</p></div>
+  {% else %}
   <div data-current-session>
     {% if session_future and session.status != 'upcoming' %}
       <h2 class="session-title">{% if session.status == 'sold_out' %}{% if include.course.type == 'course' %}all cohorts filled — join the waitlist.{% else %}all sessions filled — join the waitlist.{% endif %}{% elsif session.status == 'open' %}come make something.{% else %}join the waitlist for the next {{ include.course.type }}.{% endif %}</h2>
@@ -32,6 +38,7 @@
     <h2 class="session-title">join the waitlist for the next one.</h2>
     <p>the listed session has finished. hear when new places open.</p>
   </div>
+  {% endif %}
   {% if include.course.waitlist_embed_url and include.course.waitlist_embed_url != '' %}
     <div class="course-waitlist" id="join-waitlist">
       <p>prefer in person or online? you can also nominate a preferred day. both are optional.</p>

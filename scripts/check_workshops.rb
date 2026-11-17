@@ -70,3 +70,34 @@ check(!render.call('open', 'tickets', '2020-01-01T17:00:00+10:00').include?('dat
 check(open_session.include?('join the waitlist by email') && open_session.include?('subject=waitlist:'), 'Manual waitlist must be explicit')
 check(render.call('upcoming', 'tickets', '2099-12-01T17:00:00+10:00', 'https://example.org/waitlist').include?('href="https://example.org/waitlist"'), 'Configured hosted waitlist must be used')
 puts 'Workshop configuration and booking/waitlist states passed.'
+
+# Synthetic provider records exercise the page integration without real sales.
+booking = {
+  'id' => 'ev_test', 'offering_id' => courses.first['id'], 'status' => 'open',
+  'starts_at' => '2099-12-01T14:00:00+10:00', 'ends_at' => '2099-12-01T17:00:00+10:00',
+  'location' => 'test studio', 'price' => 'see booking page for current prices',
+  'booking_url' => 'https://www.tickettailor.com/checkout/test', 'booking_type' => 'tickets', 'sales_end_at' => ''
+}
+site.data['bookings'] = {'events' => [booking, booking.merge('id' => 'ev_test_2', 'starts_at' => '2100-01-01T14:00:00+10:00', 'ends_at' => '2100-01-01T17:00:00+10:00')]}
+imported = render.call('upcoming')
+check(imported.scan('data-provider-event-end=').length == 2, 'All future sessions must be listed')
+check(imported.scan('data-booking-link').length == 2, 'Each open session needs its own booking link')
+check(imported.scan('id="join-waitlist"').length == 0 && imported.scan('join the waitlist by email').length == 1, 'Multiple dates must share one waitlist')
+
+site.data['bookings']['events'] = [booking.merge('status' => 'sold_out', 'booking_url' => '')]
+check(!render.call('upcoming').include?('data-booking-link'), 'Imported sold-out sessions must not offer checkout')
+check(render.call('upcoming').include?('sessions filled - waitlist open'), 'Imported sold-out notice is missing')
+
+site.data['bookings']['events'] = [booking.merge('status' => 'announced', 'booking_url' => '')]
+check(!render.call('upcoming').include?('data-booking-link'), 'Imported announcements must not offer checkout')
+
+site.data['bookings']['events'] = [booking.merge('sales_end_at' => '2020-01-01T00:00:00Z')]
+check(!render.call('upcoming').include?('data-booking-link'), 'Closed ticket sales must not offer checkout')
+site.data['bookings']['events'] = [booking.merge('ends_at' => '2020-01-01T00:00:00Z')]
+check(!render.call('upcoming').include?('data-booking-link'), 'Imported expired sessions must not offer checkout')
+
+site.data['bookings']['events'] = [booking.merge('status' => 'sold_out', 'booking_url' => ''), booking.merge('id' => 'ev_later', 'starts_at' => '2100-01-01T14:00:00+10:00', 'ends_at' => '2100-01-01T17:00:00+10:00')]
+card = site.liquid_renderer.file('test-card').parse(File.read(File.join(root, '_includes/offering-card.html'))).render!(
+  {'include' => {'course' => courses.first}, 'site' => site.site_payload['site']}, registers: {site: site})
+check(card.include?('bookings open'), 'Catalogue must notice a later open session when the earliest is filled')
+puts 'Imported booking pages and catalogue states passed.'
