@@ -1,25 +1,26 @@
 ---
 layout: default
 title: workshop privacy
-description: How Dropbear Labs uses information provided for workshop updates and waitlist requests.
+description: how dropbear labs uses information provided for workshop updates and waitlist requests.
 permalink: /privacy/
 ---
 <article class="page-shell">
   <p class="eyebrow">dropbear labs // workshop privacy</p>
-  <h1>Your details.<br>A clear purpose.</h1>
+  <h1>your details.<br>a clear purpose.</h1>
   <div class="prose">
-    <h2>Workshop updates</h2>
+    <h2>postcards</h2>
     {% if site.data.workshops.newsletter_form_url != '' or site.data.workshops.newsletter_embed_url != '' %}
-    <p>Lab updates is Meg White / Dropbear Labs’ mailing list for workshop announcements and occasional lab updates. If you subscribe through the signup form, your details are submitted to Kit, which processes the signup and manages the mailing list. You can unsubscribe using the link in a newsletter. See <a href="https://kit.com/privacy">Kit’s privacy policy</a> for its handling of data.</p>
+    <p>postcards is meg white / dropbear labs’ mailing list. choose workshop and course news, other transmissions, or both. those choices are stored as interest tags in kit, which processes the signup and manages the mailing list. emails are sent to the interests you choose. you can unsubscribe using the link in a newsletter. see <a href="https://kit.com/privacy">kit’s privacy policy</a> for its handling of data.</p>
     {% else %}
-    <p>You can request Dropbear Labs workshop announcements and occasional lab updates by email. The link opens a draft in your email app. No request is sent until you send that email. Meg handles the signup request personally. To stop receiving updates, reply to Meg and ask to leave the list.</p>
+    <p>you can request dropbear labs workshop announcements and occasional lab updates by email. the link opens a draft in your email app. no request is sent until you send that email. meg handles the signup request personally. to stop receiving updates, reply to meg and ask to leave the list.</p>
     {% endif %}
-    <h2>Course waitlists</h2>
-    <p>Where a course offers a waitlist by email, clicking the link opens a draft in your email app. No request is sent until you send that email. Meg uses the contact details and course preference you provide to respond about that course and its availability. A waitlist email does not subscribe you to general lab updates.</p>
-    <p>Course waitlist forms are handled by Kit. Your email is used for news and availability about the course you select. Confirm your email to join. These forms do not sign you up for general lab updates, reserve a place, or process payment. You can unsubscribe from the emails. See <a href="https://kit.com/privacy">Kit’s privacy policy</a>.</p>
-    <h2>Bookings and payments</h2>
-    <p>When a session is available, its booking link takes you to the event’s booking provider. That provider handles registration and payment under its own terms and privacy policy. Card details are not entered on this website.</p>
-    <h2>Questions or removal</h2>
-    <p>To ask about your information or request removal from a waitlist, email <a href="mailto:{{ site.data.workshops.contact_email }}">{{ site.data.workshops.contact_email }}</a>.</p>
+    <h2>workshop and course waitlists</h2>
+    <p>where a course offers a waitlist by email, clicking the link opens a draft in your email app. no request is sent until you send that email. meg uses the contact details and course preference you provide to respond about that course and its availability. a waitlist email does not subscribe you to general lab updates.</p>
+    <p>waitlist forms are handled by kit. your email is used for news and availability about the offering you select. you can optionally nominate in-person or online delivery and a preferred day. these preferences are stored separately for each offering to help plan future sessions.</p>
+    <p>confirm your email to join a waitlist. this does not sign you up for postcards, reserve a place, or process payment. you can unsubscribe from the emails. see <a href="https://kit.com/privacy">kit’s privacy policy</a>.</p>
+    <h2>bookings and payments</h2>
+    <p>when a session is available, its booking link takes you to the event’s booking provider. that provider handles registration and payment under its own terms and privacy policy. card details are not entered on this website.</p>
+    <h2>questions or removal</h2>
+    <p>to ask about your information or request removal from a waitlist, email <a href="mailto:{{ site.data.workshops.contact_email }}">{{ site.data.workshops.contact_email }}</a>.</p>
   </div>
 </article>

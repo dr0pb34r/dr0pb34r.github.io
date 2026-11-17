@@ -1,45 +1,38 @@
 ---
 layout: default
-title: workshops
-description: AI workshops with Meg White at Dropbear Labs. Explore creative AI, Provocations, and building bespoke tools with your AI assistant. Find a session or join a waitlist.
+title: workshops and courses
+description: short workshops and longer courses with meg white at dropbear labs. build with a magic computer, explore creative ai, join provocations, or become an agent overlord.
 permalink: /workshops/
 workshop_styles: true
 ---
-<section class="workshops-hero">
-  <div>
-    <p class="eyebrow">dropbear labs // workshops with meg white</p>
-    <h1>Less hype.<br>More <span>making.</span></h1>
-    <p class="lede">Creative experiments, critical questions, and useful things you can build yourself. Get to know AI by getting your hands into it.</p>
-    <div class="workshop-actions"><a class="workshop-button" href="#courses">Find your workshop <span aria-hidden="true">↓</span></a><a class="text-link" href="{{ '/updates/' | relative_url }}">Keep me in the loop →</a></div>
+<section class="hero workshops-hero">
+  <div class="hero-copy">
+    <p class="eyebrow">dropbear labs // workshops and courses</p>
+    <h1>listen<br>watch<br><span>do.</span></h1>
+    <p class="lede">creative experiments, critical questions, and useful things you can build yourself. get to know ai by getting your hands into it.</p>
+    <div class="workshop-actions"><a class="workshop-button" href="#offerings">find your next thing <span aria-hidden="true">↓</span></a><a class="text-link" href="{{ '/updates/' | relative_url }}">send me postcards →</a></div>
   </div>
-  <figure class="workshop-mark">
-    <img src="{{ '/wtf.png' | relative_url }}" alt="The Dropbear Labs bear at a computer" width="512" height="512">
+  <figure class="hero-mark">
+    <img src="{{ '/wtf.png' | relative_url }}" alt="dropbear labs: a drop bear at a computer">
     <figcaption>curiosity encouraged // sceptics welcome</figcaption>
   </figure>
 </section>
-<div class="workshop-intro-strip"><p>Been to one of my workshops at SLQ?</p><a class="text-link" href="{{ '/updates/' | relative_url }}">This is where to find what’s next ↗</a></div>
-<section class="course-catalogue" id="courses">
-  <header class="catalogue-header"><div><p class="eyebrow">three ways in</p><h2>What do you<br>want to make?</h2></div><p>Pick a direction. Each course has a permanent home here, so you can register your interest even between sessions.</p></header>
-  {% for course in site.data.courses %}
-  <article class="course-row accent-{{ course.accent }}">
-    <span class="course-number" aria-hidden="true">{{ course.number }}</span>
-    <div class="course-row-copy"><p class="eyebrow">{{ course.category }}</p><h3><a href="{{ course.path | relative_url }}">{{ course.title | escape }}</a></h3><p>{{ course.summary | escape }}</p><div class="course-tags"><span>{{ course.format | escape }}</span><span>{{ course.experience | escape }}</span></div></div>
-    <div class="course-row-action">
-      {% assign current_time = site.time | date: '%s' | plus: 0 %}{% assign end_time = course.session.ends_at | date: '%s' | plus: 0 %}
-      {% if course.session.ends_at != '' and end_time > current_time and course.session.status != 'upcoming' %}
-      <span class="course-status" data-catalogue-session-end="{{ course.session.ends_at | escape }}">{% if course.session.status == 'open' %}Bookings open{% elsif course.session.status == 'sold_out' %}Session full · waitlist open{% else %}Session announced{% endif %}</span>
-      {% else %}<span class="course-status">Next date to be announced</span>{% endif %}
-      <a class="workshop-button button-outline" href="{{ course.path | relative_url }}">Explore the course <span aria-hidden="true">↗</span></a>
-    </div>
-  </article>
-  {% endfor %}
+<section class="course-catalogue" id="offerings">
+  <header class="catalogue-header"><div><p class="eyebrow">current offerings</p><h2>what do you<br>want to make?</h2></div><p>a day to explore something new, or a bigger investment in your practice. join a waitlist even when the next date isn’t booked.</p></header>
+  <section class="offering-group" id="workshops" aria-labelledby="workshops-heading">
+    <header class="offering-group-header"><h2 id="workshops-heading">workshops</h2><p>short, one-day things. come curious, make something, take it with you.</p></header>
+    {% assign workshops = site.data.courses | where: 'type', 'workshop' %}{% for course in workshops %}{% include offering-card.html course=course %}{% endfor %}
+  </section>
+  <section class="offering-group" id="courses" aria-labelledby="courses-heading">
+    <header class="offering-group-header"><h2 id="courses-heading">courses</h2><p>bigger investments. time to build, test, reflect, and develop your practice.</p></header>
+    {% assign courses = site.data.courses | where: 'type', 'course' %}{% for course in courses %}{% include offering-card.html course=course %}{% endfor %}
+  </section>
 </section>
 <section class="wire-banner">
-  <div><p class="eyebrow">lab updates // occasional transmissions</p><h2>Catch the<br>next one.</h2></div>
-  <div><p>New workshop dates, course announcements, and things worth sharing from the lab. Get an email when there’s something to know.</p><a class="workshop-button" href="{{ '/updates/' | relative_url }}">Sign up for lab updates <span aria-hidden="true">→</span></a><p class="small-print">No date booked? You can still stay in the loop.</p></div>
+  <div><p class="eyebrow">postcards // from the lab</p><h2>catch the<br>next one.</h2></div>
+  <div><p>workshops, courses, or other transmissions. choose what you want to hear about.</p><a class="workshop-button" href="{{ '/updates/' | relative_url }}">get postcards <span aria-hidden="true">→</span></a><p class="small-print">spam-free. unsubscribe any time.</p></div>
 </section>
 <section class="workshop-bottom-grid">
-  <div><p class="eyebrow">made for curious people</p><h2>Come with questions.</h2><p>You don’t need to be convinced by AI to get something out of these workshops. We’ll make space for the mechanics, the possibilities, and the uncomfortable bits.</p><p>Dropbear Labs workshops are independently run by Meg White. Dates and venues will be listed here as they’re confirmed.</p></div>
-  <div class="workshop-faq"><details><summary>What if nothing is booked yet?</summary><p>Each course page stays here between sessions. Send a waitlist request for the course you’re interested in, or join lab updates for general announcements. A waitlist request is an expression of interest, not a ticket or a guaranteed place.</p></details><details><summary>How do bookings and tickets work?</summary><p>When a session opens, its course page will show the date, location, price, and a link to book or register. Payment happens through the linked booking service.</p></details><details><summary>Is this an SLQ program?</summary><p>These are independent Dropbear Labs courses. If you met Meg at an SLQ workshop, you’re in the right place to follow her work. Any future SLQ session will be identified in its event listing.</p></details><details><summary>Can I book something for my team?</summary><p><a href="mailto:{{ site.data.workshops.contact_email }}?subject=Workshop%20enquiry">Email Meg</a> with your group, idea, and preferred timing. We can work out a useful starting point.</p></details></div>
+  <div><p class="eyebrow">made for curious people</p><h2>come with questions.</h2><p>you don’t need to be convinced by ai to get something out of these workshops. we’ll make space for the mechanics, the possibilities, and the uncomfortable bits.</p><p>dropbear labs workshops are independently run by meg white. dates and venues will be listed here as they’re confirmed.</p></div>
+  <div class="workshop-faq"><details><summary>what if nothing is booked yet?</summary><p>each page stays here between sessions. join the waitlist for the workshop or course you’re interested in, or sign up for postcards. a waitlist signup is an expression of interest, not a ticket or a guaranteed place.</p></details><details><summary>how do bookings and tickets work?</summary><p>when a session opens, its page will show the date, location, price, and a link to book or register. payment happens through the linked booking service.</p></details><details><summary>can i book something for my team?</summary><p><a href="mailto:{{ site.data.workshops.contact_email }}?subject=workshop%20enquiry">email meg</a> with your group, idea, and preferred timing. we can work out a useful starting point.</p></details></div>
 </section>
-<div class="resource-link"><span>Already making things with hardware?</span><a class="text-link" href="{{ '/workshops/arduino102/' | relative_url }}">Arduino 102 guide →</a></div>

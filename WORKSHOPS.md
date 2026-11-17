@@ -1,106 +1,97 @@
-# Workshop pages
+# workshops, courses, and postcards
 
-The public entry point is `/workshops/`. Permanent course pages are:
+public pages:
 
-- `/provocations/`
-- `/workshops/creative-ai/`
-- `/workshops/build-almost-anything/`
+- `/workshops/`: the catalogue, split into short workshops and longer courses
+- `/workshops/build-almost-anything/`: how to build (almost) anything with a magic computer
+- `/workshops/creative-ai/`: creative ai
+- `/provocations/`: the intensive 8-week studio for artists
+- `/courses/agent-overlord/`: agent overlord
+- `/updates/`: postcards
+- `/mail.html`: a preserved link to the postcard signup
 
-`/updates/` is the newsletter signup. `/mail.html` preserves the old signup URL
-and links to the new page. The shared navigation and homepage link to both.
+## kit forms
 
-## Mailing list and waitlists
+these forms are published in meg's dropbear labs kit account. all have email
+confirmation enabled and auto-confirm disabled. no broadcast has been sent.
 
-Four inline forms are published in Meg's `dropbear labs` Kit account:
-
-| Audience | Kit form ID | Public form |
+| audience | kit form id | share url |
 | --- | --- | --- |
-| General lab updates | 10200831 | https://dropbear-labs.kit.com/266d2fa377 |
-| Provocations waitlist | 10200846 | https://dropbear-labs.kit.com/16c07d212a |
-| Creative AI waitlist | 10200856 | https://dropbear-labs.kit.com/a3494dc7d4 |
-| Build almost anything waitlist | 10200863 | https://dropbear-labs.kit.com/0b04398cb9 |
+| postcards | 10200831 | https://dropbear-labs.kit.com/266d2fa377 |
+| magic computer waitlist | 10200863 | https://dropbear-labs.kit.com/0b04398cb9 |
+| creative ai waitlist | 10200856 | https://dropbear-labs.kit.com/a3494dc7d4 |
+| provocations studio waitlist | 10200846 | https://dropbear-labs.kit.com/16c07d212a |
+| agent overlord waitlist | 10201027 | https://dropbear-labs.kit.com/9900d8bbec |
 
-All have confirmation emails enabled and auto-confirm disabled. Each form has
-a descriptive confirmation-email subject. The general updates button says
-`Get lab updates`; the course buttons say `Join the waitlist`. Branding is
-applied through the form's custom CSS. The sender currently uses Meg's Gmail
-address; a domain sender can be set up separately.
+form share urls, embed urls, and uids are in `_data/courses.json` and
+`_data/workshops.json`. keep those identifiers exactly as returned by kit.
+no api secret belongs in this public repository.
 
-The old Brevo form has been removed because ownership of that account is
-unknown. No addresses should be sent there.
+the sender currently uses meg's gmail address. domain email can be configured
+separately. creator network recommendations are turned off. the old mailing
+provider connection has been removed because account ownership was unknown.
 
-Use Kit form membership to target the appropriate audience. A course waitlist
-signup does not add membership in the general updates form. When sending a
-broadcast, select subscribers to the relevant form instead of sending to all
-subscribers. No newsletter campaign has been sent by the development agent.
+## postcard interests
 
-For general updates, `newsletter_form_url` holds the verified Kit share URL
-in `_data/workshops.json`. Both `newsletter_embed_url` and
-`newsletter_form_uid` come from Kit's generated JavaScript embed. The provider
-provider embed handles actual validation and confirmation; the page offers the
-hosted form as a fallback. No API secret belongs in this public website.
+the postcard form has two independent checkbox choices:
 
-Verify with your own email that signup reaches the intended audience, the
-confirmation arrives, the sender is correct, and unsubscribe works. Account
-creation, ownership verification, and sender verification require the owner.
+- `workshops and courses` — kit tag `25977608`
+- `other transmissions` — kit tag `25977618`
 
-The production lab-updates signup was tested on 17 November 2026 with Meg's
-permission. Meg confirmed receipt of the confirmation email and clicked its
-confirmation link. No broadcast was sent. Creator Network Recommendations
-were turned off to keep the signup flow focused on Dropbear Labs.
+readers can select either or both. the website requires at least one choice.
+when sending in kit, select the corresponding tag, rather than all subscribers.
+select both audiences when a message is relevant to both. existing subscribers
+without an interest tag should choose their interests before targeted sends;
+do not infer their choice.
 
-Course waitlists are embedded in each course's booking panel. The provider
-form handles the submission and confirmation, with a hosted-form fallback.
-No locally simulated success state is used. Joining a waitlist does not reserve
-a seat or process payment.
+## waitlist preferences
 
-The course's `waitlist_form_url`, `waitlist_embed_url`, and `waitlist_form_uid`
-live in `_data/courses.json`. If an embed is removed, the hosted-form link is
-used. If both are removed, the page falls back to an explicitly manual email
-request to the existing site contact address. The visitor must send that email.
+each waitlist has two optional custom fields: preferred delivery and preferred
+day. the website offers suggestions for in person, online, weekdays, or no
+preference. readers can also enter a more specific preference.
 
-General provider settings and contact email are in `_data/workshops.json`.
-Do not paste API secrets into public files.
+kit stores separate fields for each offering, so a choice on one waitlist does
+not overwrite another:
 
-## Announce a session or open bookings
+- magic computer delivery / magic computer day
+- creative ai delivery / creative ai day
+- provocations delivery / provocations day
+- agent overlord delivery / agent overlord day
 
-Edit the course's `session` in `_data/courses.json`. All dates must include
-the Brisbane offset `+10:00`. Supported statuses are:
+send waitlist news to subscribers to that specific kit form. waitlist membership
+does not mean someone opted into postcards. a waitlist does not reserve a seat
+or process payment.
 
-- `upcoming`: no confirmed session; keep promoting the course and its waitlist.
-- `announced`: show confirmed session details; bookings have not opened.
-- `open`: show the booking link and session details.
-- `sold_out`: hide the booking link and offer the waitlist.
+## sessions and bookings
 
-For any confirmed session, provide `starts_at`, `ends_at`, `location`, and
-`price` (a display string; e.g. `Free` or `A$120`). For `open`, also provide
-a real HTTPS `booking_url`. Set `booking_type` to `tickets` for "Book tickets"
-or `registration` for "Register for this session". The linked provider must
-already handle the registration/payment and capacity. The website itself
-does not handle payments, set stock, or discover that an event has sold out.
+edit the offering's `session` in `_data/courses.json`:
 
-Keep unconfirmed details blank. The committed course data contains no dates,
-prices, venues, or booking URLs. Past sessions fall back to the waitlist at
-build time; the page also hides expired session details in the browser if an
-old static build remains online. Start and end times must be on the same
-Brisbane date for the current date display.
+- `upcoming`: waitlist open; no dates or availability claims
+- `announced`: show confirmed details while bookings are closed
+- `open`: show the real external booking or registration link
+- `sold_out`: show filled-session or filled-cohort wording and the waitlist
 
-Rebuild and publish through the existing GitHub Pages setup after edits.
-No new hosting account or Sites project is required for this repository.
+for a confirmed session provide `starts_at`, `ends_at`, `location`, and `price`.
+use iso dates with the brisbane offset `+10:00`. multi-day and multi-week
+courses show both start and end dates. for `open`, add a real https `booking_url`.
+`booking_type` is `tickets` or `registration`. the booking provider handles
+payments and capacity; update the status manually when a session fills.
 
-## Verify
+keep unconfirmed details blank. none of the current offerings has dates, prices,
+venues, or booking links. expired sessions return to waitlist wording. no claim
+that cohorts are filled is shown unless the offering is marked `sold_out`.
+
+## verification and publishing
 
 ```sh
 bundle exec ruby scripts/check_workshops.rb
-bundle exec jekyll build --destination /tmp/dropbear-site
+bundle exec jekyll build --destination .preview
 ```
 
-Check `/workshops/`, the three course pages, `/updates/`, `/mail.html`, and
-`/privacy/` on desktop and mobile. Complete one real opt-in yourself before
-sharing a changed signup link. The only test subscription submitted by the
-development agent was the production lab-updates test explicitly authorized
-by Meg; no other recipients were contacted.
+check the catalogue, each offering, and postcards on desktop and mobile. test
+both postcard interest choices and confirm that waitlist preferences remain
+optional. source is published through the existing github pages repository.
 
-The Provocations grant/application material informed the course copy only.
-Historic dates, grant-dependent access commitments, proposed venues, and
-collaborator roles were not presented as confirmed offers.
+the original production newsletter signup was tested on 17 november 2026 with
+meg's explicit permission; meg received and confirmed the email. no other
+recipients were contacted. later form edits have not sent test emails.

@@ -1,35 +1,23 @@
 ---
 layout: default
-title: lab updates
-description: Follow Meg White and Dropbear Labs for AI workshop dates, new courses, and occasional updates from the lab.
+title: postcards
+description: if you want to hear about workshops, courses or results, jump on the mailing list. spam-free.
 permalink: /updates/
 workshop_styles: true
 ---
 <section class="signup-page">
-  <div>
-    <p class="eyebrow">dropbear labs // occasional transmissions</p>
-    <h1>Catch the<br><span style="color: var(--cyan)">next one.</span></h1>
-    <p class="lede">The next workshop. A new course. Something useful from the lab. Follow what I’m making, and find out when you can join in.</p>
-    <ul class="signup-benefits"><li>New dates and booking announcements.</li><li>Provocations, creative AI, and building with your AI assistant.</li><li>Occasional resources and experiments from Dropbear Labs.</li></ul>
-    <p class="small-print">Emails from Meg White / Dropbear Labs. You can ask to leave the list at any time.</p>
-    <div class="signup-alternative"><p>Interested in one course in particular?</p><a href="{{ '/workshops/' | relative_url }}">Choose a course and join its waitlist →</a><p>Waitlists and ticket bookings are separate from general updates.</p></div>
-  </div>
-  <div class="signup-form">
-    <h2>A little less algorithm.<br>A little more inbox.</h2>
+  <h1>postcards</h1>
+  <p class="lede">if you want to hear about workshops, courses or results, jump on the mailing list. spam-free.</p>
+  <div class="signup-form" data-newsletter-signup>
     {% if site.data.workshops.newsletter_embed_url != '' and site.data.workshops.newsletter_form_uid != '' %}
-      <script async data-uid="{{ site.data.workshops.newsletter_form_uid | escape }}" src="{{ site.data.workshops.newsletter_embed_url | escape }}"></script>
-      <p class="small-print">Sign up to receive workshop news and occasional lab updates from Meg White. Follow the confirmation steps from Kit after submitting. Unsubscribe in any newsletter.</p>
+      <script async data-uid="{{ site.data.workshops.newsletter_form_uid | escape }}" src="{{ site.data.workshops.newsletter_embed_url | escape }}?v={{ site.data.workshops.form_revision | escape }}"></script>
     {% elsif site.data.workshops.newsletter_form_url != '' %}
-      <p>Get workshop announcements and occasional lab updates from Meg White.</p>
-      <a class="workshop-button" href="{{ site.data.workshops.newsletter_form_url | escape }}">Sign up for lab updates <span aria-hidden="true">↗</span></a>
-      <p class="small-print">Signup is handled by Kit. Follow its confirmation steps. Unsubscribe using the link in any newsletter.</p>
+      <a class="workshop-button" href="{{ site.data.workshops.newsletter_form_url | escape }}">get postcards <span aria-hidden="true">↗</span></a>
     {% else %}
-      <p>Want to hear when there’s a new workshop? Send Meg a signup request by email.</p>
-      <a class="workshop-button" href="mailto:{{ site.data.workshops.contact_email }}?subject=Subscribe%20to%20Dropbear%20Labs%20updates&amp;body=Hi%20Meg%2C%0A%0APlease%20add%20me%20to%20the%20Dropbear%20Labs%20mailing%20list%20for%20workshop%20announcements%20and%20occasional%20lab%20updates.%20I%20understand%20I%20can%20ask%20to%20unsubscribe%20at%20any%20time.%0A%0AMy%20name%3A%0A%0AThanks!">Request updates by email <span aria-hidden="true">↗</span></a>
-      <p class="small-print">Opens a draft in your email app. Send it to request signup; opening the draft does not subscribe you. Meg will handle your request personally.</p>
-      <p class="small-print">Or email <a href="mailto:{{ site.data.workshops.contact_email }}">{{ site.data.workshops.contact_email }}</a> and ask for Dropbear Labs updates.</p>
+      <a class="workshop-button" href="mailto:{{ site.data.workshops.contact_email }}?subject=postcards%20signup">request postcards by email <span aria-hidden="true">↗</span></a>
+      <p class="small-print">opens a draft in your email app. send it to request signup.</p>
     {% endif %}
-    <p class="small-print"><a href="{{ '/privacy/' | relative_url }}">How your information is used</a>.</p>
-    {% if site.data.workshops.newsletter_form_url != '' %}<p class="small-print">Form not loading? <a href="{{ site.data.workshops.newsletter_form_url | escape }}">Use the hosted signup form ↗</a></p>{% endif %}
+    <p class="small-print">confirm by email. unsubscribe any time. <a href="{{ '/privacy/' | relative_url }}">privacy</a>.</p>
+    {% if site.data.workshops.newsletter_form_url != '' %}<p class="small-print"><a href="{{ site.data.workshops.newsletter_form_url | escape }}">use the hosted form ↗</a></p>{% endif %}
   </div>
 </section>

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    {% if page.workshop_styles %}<link rel="stylesheet" href="{{ '/assets/css/workshops.css' | relative_url }}">{% endif %}
+    {% if page.workshop_styles %}<link rel="stylesheet" href="{{ '/assets/css/workshops.css' | relative_url }}?v={{ site.data.workshops.form_revision | escape }}">{% endif %}
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     {% feed_meta %}
   </head>
@@ -22,18 +22,18 @@
     <header class="topbar">
       <a class="wordmark" href="{{ '/' | relative_url }}">dropbear labs <span>// research</span></a>
       <nav aria-label="primary">
-        <a href="{{ '/workshops/' | relative_url }}" {% if page.url contains '/workshops/' or page.course_id == 'provocations' %}aria-current="page"{% endif %}>workshops</a>
-        <a href="{{ '/updates/' | relative_url }}" {% if page.url == '/updates/' or page.url == '/mail.html' %}aria-current="page"{% endif %}>lab updates</a>
-        <a href="{{ '/#notes' | relative_url }}">notes</a>
         <a href="{{ '/about/' | relative_url }}">about</a>
+        <a href="{{ '/#notes' | relative_url }}">notes</a>
+        <a href="{{ '/workshops/' | relative_url }}" {% if page.url contains '/workshops/' or page.course_id %}aria-current="page"{% endif %}>workshops</a>
+        <a href="{{ '/updates/' | relative_url }}" {% if page.url == '/updates/' or page.url == '/mail.html' %}aria-current="page"{% endif %}>mail</a>
         <a href="https://slobberdog.fyi">slobberdog</a>
       </nav>
     </header>
     <main id="main">{{ content }}</main>
     <footer class="site-footer">
       <span>dropbear labs // brisbane-ish</span>
-      <span><a href="{{ '/updates/' | relative_url }}">workshop updates</a> // <a href="{{ '/privacy/' | relative_url }}">privacy</a></span>
+      <span><a href="{{ '/updates/' | relative_url }}">postcards</a> // <a href="{{ '/privacy/' | relative_url }}">privacy</a></span>
     </footer>
-    {% if page.workshop_styles %}<script src="{{ '/assets/js/workshops.js' | relative_url }}" defer></script>{% endif %}
+    {% if page.workshop_styles %}<script src="{{ '/assets/js/workshops.js' | relative_url }}?v={{ site.data.workshops.form_revision | escape }}" defer></script>{% endif %}
   </body>
 </html>
